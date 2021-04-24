@@ -30,5 +30,6 @@ public class ReverseNormals : MonoBehaviour
 				mesh.SetTriangles(triangles, m);
 			}
 		}
+		gameObject.AddComponent<MeshCollider>();
 	}
 }

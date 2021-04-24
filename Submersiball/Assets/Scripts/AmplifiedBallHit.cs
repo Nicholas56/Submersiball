@@ -14,6 +14,10 @@ public class AmplifiedBallHit : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        rb.AddForce(collision.GetContact(0).normal * forceMultiplier, ForceMode.Impulse);
+        if (collision.transform.tag == "Player")
+        {
+            rb.AddForce(collision.GetContact(0).normal * forceMultiplier, ForceMode.Impulse);
+        }
+        else { rb.AddForce(collision.GetContact(0).normal, ForceMode.Impulse); }
     }
 }

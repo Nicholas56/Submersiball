@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1834565}
   - component: {fileID: 1834567}
   - component: {fileID: 1834566}
+  - component: {fileID: 778191985}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -83,6 +84,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834564}
   m_Enabled: 1
+--- !u!114 &778191985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46a450a82448524bba17bd20ea37bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xSensitivity: -0.1
+  ySensitivity: 0.1
+  freeCamera: 0
+  freeCameraButton: 8
 --- !u!1 &686532474205034843
 GameObject:
   m_ObjectHideFlags: 0
@@ -6599,7 +6616,7 @@ GameObject:
   - component: {fileID: 1392097844}
   m_Layer: 0
   m_Name: Submarine
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
