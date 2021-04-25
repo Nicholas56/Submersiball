@@ -18,6 +18,7 @@ public class SubmarineMovement : MonoBehaviour
 
     [SerializeField] bool boost = true;
     [SerializeField] bool accel = false;
+    [SerializeField] ParticleSystem boostParticles;
 
     float h;
     float v;
@@ -31,11 +32,12 @@ public class SubmarineMovement : MonoBehaviour
         //Key to boost, if boost is available
         if (Input.GetKey(boostButton) && boostTime>0 && boost)
         {
+            boostParticles.Play();
             rb.AddForce(transform.forward * boostSpeed,ForceMode.Acceleration);
             boostTime = Mathf.Max(boostTime - Time.deltaTime, 0);
             if (boostTime <= 0.2f) { boost = false; }
         }
-        else { boostTime = Mathf.Min(boostTime + Time.deltaTime, maxBoostTime); if (boostTime == maxBoostTime) boost = true; }
+        else { boostTime = Mathf.Min(boostTime + Time.deltaTime, maxBoostTime); if (boostTime == maxBoostTime) { boost = true; }  }
 
         //Key to initiate acceleration
         if (Input.GetKeyDown(accelerateButton)) { accel = !accel; }

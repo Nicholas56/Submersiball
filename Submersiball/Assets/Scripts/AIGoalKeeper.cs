@@ -10,8 +10,6 @@ public class AIGoalKeeper : MonoBehaviour
     [SerializeField] float proximity = 20.0f;
     [SerializeField] List<Transform> points;
     int currentPoint = 0;
-    public enum Behaviour { None, Turning, Moving, Reached}
-    public Behaviour state;
     Vector3 newHeading;
     
     void Start()
