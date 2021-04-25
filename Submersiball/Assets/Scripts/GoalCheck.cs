@@ -12,6 +12,7 @@ public class GoalCheck : MonoBehaviour
         if (other.tag == "Ball")
         {
             other.transform.position = ballRestartPos.position;
+            other.GetComponent<Rigidbody>().velocity = Vector3.zero;
             ps.Play();
         }
     }
