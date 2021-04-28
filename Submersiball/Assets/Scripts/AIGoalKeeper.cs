@@ -9,13 +9,26 @@ public class AIGoalKeeper : MonoBehaviour
     [SerializeField] float turnSpeed = 1.0f;
     [SerializeField] float proximity = 20.0f;
     [SerializeField] List<Transform> points;
+    [SerializeField] bool aim;
     int currentPoint = 0;
+    Vector3 currentPointPosition;
     Vector3 newHeading;
-    
+    Transform ball;
+    [SerializeField] [Range(1, 2)] int team = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         newHeading = (points[currentPoint].position - transform.position).normalized;
+        ball = FindObjectOfType<AmplifiedBallHit>().transform; 
+        if (team == 1)
+        {
+            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team1Mat);
+        }
+        else
+        {
+            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team2Mat);
+        }
     }
     void FixedUpdate()
     {
@@ -28,9 +41,27 @@ public class AIGoalKeeper : MonoBehaviour
                 rb.AddForce(transform.forward * moveSpeed, ForceMode.Force);
         if (Vector3.Distance(transform.position, points[currentPoint].position) < proximity)
         {
-            currentPoint++;
-            if (currentPoint == points.Count) { currentPoint = 0; }
+            if (aim) { currentPointPosition = FindClostestPoint().position; } 
+            else
+            {
+                currentPoint++;
+                if (currentPoint == points.Count) { currentPoint = 0; }
+                currentPointPosition = points[currentPoint].position;
+            }
+        } 
+        newHeading = (currentPointPosition - transform.position).normalized; 
+    }
+
+    Transform FindClostestPoint()
+    {
+        Transform closest = points[0];
+        for (int i = 1; i < points.Count; i++)
+        {
+            if (Vector3.Distance(ball.position, points[i].position) < Vector3.Distance(ball.position, closest.position))
+            {
+                closest = points[i];
+            }
         }
-        newHeading = (points[currentPoint].position - transform.position).normalized;
+        return closest;
     }
 }

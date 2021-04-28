@@ -1102,6 +1102,7 @@ GameObject:
   - component: {fileID: 8197582439880971154}
   - component: {fileID: 2996408227954078385}
   - component: {fileID: 7129483884857832981}
+  - component: {fileID: 3210953855667836397}
   m_Layer: 0
   m_Name: SubmarineGoalKeeper
   m_TagString: Player
@@ -1177,7 +1178,8 @@ MonoBehaviour:
   - {fileID: 8174027572341363283}
   - {fileID: 8174027572331683547}
   - {fileID: 8174027572373450668}
-  state: 1
+  aim: 0
+  team: 1
 --- !u!114 &7129483884857832981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,6 +1193,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ps: {fileID: 1502521612295937401}
+  respawnPoint: {x: 0, y: 0, z: 0}
+--- !u!114 &3210953855667836397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2996408227954078384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fe151ab61a78745800b735b3e7b71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 3431117164956732893}
+  - {fileID: 688232635214770996}
+  - {fileID: 2596803311003392885}
+  - {fileID: 5228502039968526975}
+  - {fileID: 8596652404452452174}
 --- !u!1 &3014667194475200538
 GameObject:
   m_ObjectHideFlags: 0

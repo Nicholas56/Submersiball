@@ -12,13 +12,16 @@ public class SubmarineMovement : MonoBehaviour
 
     [Header("Movement Values")]
     [SerializeField] float moveSpeed = 5.0f;
+    [SerializeField] float maxSpeed = 10.0f;
     [SerializeField] float boostSpeed = 2f;
     [SerializeField] float boostTime = 2;
     [SerializeField] float maxBoostTime = 2;
 
+    [Header("Misc")]
     [SerializeField] bool boost = true;
     [SerializeField] bool accel = false;
     [SerializeField] ParticleSystem boostParticles;
+    [SerializeField] [Range(1, 2)] int team = 0;
 
     float h;
     float v;
@@ -26,6 +29,14 @@ public class SubmarineMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if (team == 1)
+        {
+            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team1Mat);
+        }
+        else
+        {
+            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team2Mat);
+        }
     }
     private void Update()
     {
@@ -41,7 +52,14 @@ public class SubmarineMovement : MonoBehaviour
 
         //Key to initiate acceleration
         if (Input.GetKeyDown(accelerateButton)) { accel = !accel; }
-        if (accel) { rb.AddForce(transform.forward * moveSpeed,ForceMode.Force); } //else { rb.velocity = Vector3.zero; }
+        if (accel) 
+        {
+            rb.AddForce(transform.forward * moveSpeed,ForceMode.Force);
+            if (rb.velocity.magnitude > maxSpeed)
+            {
+                rb.AddForce(transform.forward * -moveSpeed, ForceMode.Force);
+            }
+        } //else { rb.velocity = Vector3.zero; }
     }
     void FixedUpdate()
     {

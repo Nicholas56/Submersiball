@@ -12171,6 +12171,7 @@ GameObject:
   - component: {fileID: 2826775859329315829}
   - component: {fileID: 5600975807168493979}
   - component: {fileID: 9181838025744601814}
+  - component: {fileID: 6842741198840274165}
   m_Layer: 0
   m_Name: SubmarineAttacker
   m_TagString: Player
@@ -12219,7 +12220,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9181838025744601815}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c854c5a0a1484304aa0b82840f7af8ea, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1
@@ -12239,6 +12240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ps: {fileID: 6320592239622861518}
+  respawnPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &9181838025744601814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12253,7 +12255,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   turnSpeed: 1
-  ball: {fileID: 0}
+  team: 2
+--- !u!114 &6842741198840274165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9181838025744601815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fe151ab61a78745800b735b3e7b71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 8747352225246948794}
+  - {fileID: 6878130838846985043}
+  - {fileID: 8282298640908073746}
+  - {fileID: 2195028207555990040}
+  - {fileID: 2428673514850060073}
 --- !u!1001 &6383749631373144036
 PrefabInstance:
   m_ObjectHideFlags: 0

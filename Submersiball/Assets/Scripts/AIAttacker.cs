@@ -7,7 +7,9 @@ public class AIAttacker : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float moveSpeed = 5.0f;
     [SerializeField] float turnSpeed = 1.0f;
-    [SerializeField] Transform ball;
+    Transform ball;
+    [SerializeField] [Range(1, 2)] int team = 0;
+    Vector3 offset;
     Vector3 newHeading;
 
     void Start()
@@ -15,6 +17,17 @@ public class AIAttacker : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         if (ball == null) { ball = FindObjectOfType<AmplifiedBallHit>().transform; }
         newHeading = (ball.position - transform.position).normalized;
+        if (team == 1) { 
+            offset = new Vector3(0, 0, -1);
+            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team1Mat);
+        }
+        else 
+        { 
+            offset = new Vector3(0, 0, 1);
+            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team2Mat);
+        }
+
+
     }
     void FixedUpdate()
     {
@@ -25,6 +38,6 @@ public class AIAttacker : MonoBehaviour
         // Calculate a rotation a step closer to the target and applies rotation to this object
         transform.rotation = Quaternion.LookRotation(newDirection);
         rb.AddForce(transform.forward * moveSpeed, ForceMode.Force);
-        newHeading = (ball.position - transform.position).normalized;
+        newHeading = (ball.position - transform.position+offset).normalized;
     }
 }
