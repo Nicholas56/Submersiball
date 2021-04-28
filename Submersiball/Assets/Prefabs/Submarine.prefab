@@ -11477,7 +11477,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6365495729727658769}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c854c5a0a1484304aa0b82840f7af8ea, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1
@@ -11518,6 +11518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ps: {fileID: 8110411792545430280}
+  respawnPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &7385190353425889101
 GameObject:
   m_ObjectHideFlags: 0

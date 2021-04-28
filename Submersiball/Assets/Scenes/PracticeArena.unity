@@ -6833,6 +6833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arena
       objectReference: {fileID: 0}
+    - target: {fileID: 8291195896979947883, guid: b8cfa60e96a34454db948996276826a1, type: 3}
+      propertyPath: addCollider
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8291195896979947895, guid: b8cfa60e96a34454db948996276826a1, type: 3}
       propertyPath: m_RootOrder
       value: 3
