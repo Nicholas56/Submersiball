@@ -5,10 +5,10 @@ using UnityEngine;
 public class AIAttacker : MonoBehaviour
 {
     Rigidbody rb;
-    [SerializeField] float moveSpeed = 5.0f;
+    public float moveSpeed = 5.0f;
     [SerializeField] float turnSpeed = 1.0f;
     Transform ball;
-    [SerializeField] [Range(1, 2)] int team = 0;
+    [Range(1, 2)] public int team = 0;
     Vector3 offset;
     Vector3 newHeading;
 
@@ -17,17 +17,7 @@ public class AIAttacker : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         if (ball == null) { ball = FindObjectOfType<AmplifiedBallHit>().transform; }
         newHeading = (ball.position - transform.position).normalized;
-        if (team == 1) { 
-            offset = new Vector3(0, 0, -1);
-            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team1Mat);
-        }
-        else 
-        { 
-            offset = new Vector3(0, 0, 1);
-            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team2Mat);
-        }
-
-
+        TeamColors();
     }
     void FixedUpdate()
     {
@@ -39,5 +29,19 @@ public class AIAttacker : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDirection);
         rb.AddForce(transform.forward * moveSpeed, ForceMode.Force);
         newHeading = (ball.position - transform.position+offset).normalized;
+    }
+
+    public void TeamColors()
+    {
+        if (team == 1)
+        {
+            offset = new Vector3(0, 0, -1);
+            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team1Mat);
+        }
+        else
+        {
+            offset = new Vector3(0, 0, 1);
+            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team2Mat);
+        }
     }
 }

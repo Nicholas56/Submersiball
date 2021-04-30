@@ -5,7 +5,7 @@ using UnityEngine;
 public class Explode : MonoBehaviour
 {
     [SerializeField] ParticleSystem ps;
-    [SerializeField] Vector3 respawnPoint;
+    public Vector3 respawnPoint;
     Quaternion rot;
     private void Start()
     {

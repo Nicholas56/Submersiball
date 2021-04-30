@@ -9,7 +9,7 @@ public class AIGoalKeeper : MonoBehaviour
     [SerializeField] float turnSpeed = 1.0f;
     [SerializeField] float proximity = 20.0f;
     [SerializeField] List<Transform> points;
-    [SerializeField] bool aim;
+    public bool aim;
     int currentPoint = 0;
     Vector3 currentPointPosition;
     Vector3 newHeading;
