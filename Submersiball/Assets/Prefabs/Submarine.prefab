@@ -98,8 +98,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xSensitivity: -0.1
   ySensitivity: 0.1
-  freeCamera: 0
-  freeCameraButton: 8
 --- !u!1 &686532474205034843
 GameObject:
   m_ObjectHideFlags: 0
@@ -11426,9 +11424,9 @@ GameObject:
   - component: {fileID: 1399819545982646847}
   - component: {fileID: 1392097842}
   - component: {fileID: 1392097843}
-  - component: {fileID: 1392097844}
   - component: {fileID: 7674151876343181405}
   - component: {fileID: 8295931111659614554}
+  - component: {fileID: 9154200692001666029}
   m_Layer: 0
   m_Name: Submarine
   m_TagString: Player
@@ -11485,29 +11483,6 @@ CapsuleCollider:
   m_Height: 3.5
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1392097844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6365495729727658769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0357e14771a89be4187fd05692c72b0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  accelerateButton: 323
-  boostButton: 32
-  moveSpeed: 2
-  maxSpeed: 10
-  boostSpeed: 5
-  boostTime: 2
-  maxBoostTime: 2
-  boost: 1
-  accel: 0
-  boostParticles: {fileID: 236310537814420060}
-  team: 1
 --- !u!114 &7674151876343181405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11540,6 +11515,23 @@ MonoBehaviour:
   - {fileID: 6181783202223764180}
   - {fileID: 4128946731026406366}
   - {fileID: 472552622067879663}
+--- !u!114 &9154200692001666029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6365495729727658769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f526987024ae54cbbdc2fcb718bccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  maxSpeed: 10
+  boostSpeed: 2
+  boostTime: 2
+  maxBoostTime: 2
 --- !u!1 &7385190353425889101
 GameObject:
   m_ObjectHideFlags: 0

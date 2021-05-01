@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SinglePlayerSetup : MonoBehaviour
 {
+    public static SinglePlayerSetup current;
+
     [Header("Screen Options")]
-    [SerializeField] KeyCode pauseKey;
     [SerializeField] GameObject setupPanel;
+    [SerializeField] GameObject pausePanel;
 
     [Header("Map Options")]
     [SerializeField] List<GameObject> maps;
@@ -34,10 +36,12 @@ public class SinglePlayerSetup : MonoBehaviour
     [Header("Position Options")]
     [SerializeField] List<Transform> playerPositions;
     List<Transform> previousSpawns;
-    private void Start()
+    private void Awake()
     {
+        current = this;
         Time.timeScale = 0;
         currentMap = maps[0];
+        Goalie1Choice(0);Goalie2Choice(0);
     }
     
     public void BeginGame()
@@ -123,5 +127,19 @@ public class SinglePlayerSetup : MonoBehaviour
         }
         goalie1.GetComponentInChildren<AIGoalKeeper>().aim = goalie1Aim;
         goalie2.GetComponentInChildren<AIGoalKeeper>().aim = goalie2Aim;
+    }
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        pausePanel.SetActive(true);
+    }
+    public void UnPause()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        pausePanel.SetActive(false);
     }
 }
