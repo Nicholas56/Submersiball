@@ -525,6 +525,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!1 &63628100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2979466447401289237, guid: 9a041e7379cde084fb70b585c9b66578, type: 3}
+  m_PrefabInstance: {fileID: 2979466447059256514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &65646735
 GameObject:
   m_ObjectHideFlags: 0
@@ -3994,6 +3999,7 @@ MonoBehaviour:
   - {fileID: 1294885657831001480}
   lights: {fileID: 1171595439}
   mines: {fileID: 971806897}
+  ball: {fileID: 63628100}
   playerSub: {fileID: 6365495729727658769, guid: 41beede19eecd994fa256865d6d5eb3e, type: 3}
   goalie1: {fileID: 8174027571503540088}
   goalie2: {fileID: 546422087}
@@ -6248,7 +6254,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1072268472}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 584959319}
+        m_TargetAssemblyTypeName: SinglePlayerSetup, Assembly-CSharp
+        m_MethodName: EndSession
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1072268472
 MonoBehaviour:
   m_ObjectHideFlags: 0

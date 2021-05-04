@@ -14,6 +14,7 @@ public class SinglePlayerSetup : MonoBehaviour
     [SerializeField] List<GameObject> maps;
     [SerializeField] GameObject lights;
     [SerializeField] GameObject mines;
+    [SerializeField] GameObject ball;
     [SerializeField] GameObject playerSub;
     [SerializeField] GameObject goalie1;
     [SerializeField] GameObject goalie2;
@@ -39,18 +40,18 @@ public class SinglePlayerSetup : MonoBehaviour
     private void Awake()
     {
         current = this;
-        Time.timeScale = 0;
+        UnlockCursor();
         currentMap = maps[0];
         Goalie1Choice(0);Goalie2Choice(0);
     }
     
     public void BeginGame()
     {
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        UnPause();
         setupPanel.SetActive(false);
         PlacePlayers();
+        ball.transform.position = Vector3.zero;
+        ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     public void MapChoice(int mapNum)
@@ -97,13 +98,22 @@ public class SinglePlayerSetup : MonoBehaviour
             case 3:mines.SetActive(true);lights.SetActive(false); break;
         }
     }
+    void UnlockCursor()
+    {
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+    void LockCursor()
+    {
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     void PlacePlayers()
     {
-        for (int j = 0; j < AISubs.Count; j++)
-        {
-            AISubs[j].SetActive(false);
-        }
+        HideSubs();
 
         previousSpawns = new List<Transform>();
         int num = Random.Range(0, playerPositions.Count);
@@ -128,18 +138,28 @@ public class SinglePlayerSetup : MonoBehaviour
         goalie1.GetComponentInChildren<AIGoalKeeper>().aim = goalie1Aim;
         goalie2.GetComponentInChildren<AIGoalKeeper>().aim = goalie2Aim;
     }
+    void HideSubs()
+    {
+        for (int j = 0; j < AISubs.Count; j++)
+        {
+            AISubs[j].SetActive(false);
+        }
+    }
+    public void EndSession()
+    {
+        UnlockCursor();
+        setupPanel.SetActive(true);
+
+        HideSubs();
+    }
     public void Pause()
     {
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        UnlockCursor();
         pausePanel.SetActive(true);
     }
     public void UnPause()
     {
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        LockCursor();
         pausePanel.SetActive(false);
     }
 }
