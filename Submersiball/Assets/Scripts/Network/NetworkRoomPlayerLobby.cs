@@ -15,6 +15,7 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     [SerializeField] TMP_Text[] playerNameTexts = new TMP_Text[4];
     [SerializeField] TMP_Text[] playerReadyTexts = new TMP_Text[4];
     [SerializeField] Button startGameButton = null;
+    //ADD HERE: Match settings for host to change - treat like the button above (somewhat)
 
     [SyncVar(hook = nameof(HandleDisplayNameChanged))]
     public string DisplayName = "Loading...";
@@ -111,6 +112,6 @@ public class NetworkRoomPlayerLobby : NetworkBehaviour
     {
         if (Room.RoomPlayers[0].connectionToClient != connectionToClient) { return; }
 
-        //Start Game
+        Room.StartGame();
     }
 }

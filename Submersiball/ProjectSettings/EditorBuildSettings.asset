@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PracticeArena.unity
     guid: ffd5fb4cb5562464090324f559b8abb7
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerLobby.unity
+    guid: 0d85a34c28fc54e4196f772b12d6ef83
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerGame.unity
+    guid: fe548909d2301d143b85b89cdb105d75
   m_configObjects: {}

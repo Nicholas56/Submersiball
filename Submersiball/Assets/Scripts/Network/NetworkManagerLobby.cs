@@ -17,9 +17,15 @@ public class NetworkManagerLobby : NetworkManager
     [Header("Room")]
     [SerializeField] NetworkRoomPlayerLobby roomPlayerPrefab = null;
 
+    [Header("Game")]
+    [SerializeField] NetworkGamePlayerLobby gamePlayerPrefab = null;
+    [SerializeField] GameObject playerSpawnSystem = null;
+
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
+    public static event Action<NetworkConnection> OnServerReadied;
     public List<NetworkRoomPlayerLobby> RoomPlayers { get; } = new List<NetworkRoomPlayerLobby>();
+    public List<NetworkGamePlayerLobby> GamePlayers { get; } = new List<NetworkGamePlayerLobby>();
 
     public override void OnStartServer() => spawnPrefabs = Resources.LoadAll<GameObject>("SpawnablePrefabs").ToList();
     public override void OnStartClient()
@@ -51,7 +57,7 @@ public class NetworkManagerLobby : NetworkManager
             conn.Disconnect();
             return;
         }
-        if (SceneManager.GetActiveScene().name != menuScene)
+        if (SceneManager.GetActiveScene().path != menuScene)
         {
             conn.Disconnect();
             return;
@@ -59,7 +65,7 @@ public class NetworkManagerLobby : NetworkManager
     }
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
-        if (SceneManager.GetActiveScene().name == menuScene)
+        if (SceneManager.GetActiveScene().path == menuScene)
         {
             bool isLeader = RoomPlayers.Count == 0;
             NetworkRoomPlayerLobby roomPlayerInstance = Instantiate(roomPlayerPrefab);
@@ -102,5 +108,48 @@ public class NetworkManagerLobby : NetworkManager
             if (!player.IsReady) { return false; }
         }
         return true;
+    }
+
+    public void StartGame()
+    {
+        if (SceneManager.GetActiveScene().path == menuScene)
+        {
+            if (!IsReadyToStart()) { return; }
+
+            ServerChangeScene("MultiplayerGame");
+        }
+    }
+
+    public override void ServerChangeScene(string newSceneName)
+    {
+        if (SceneManager.GetActiveScene().path == menuScene && newSceneName.Contains("Multiplayer"))
+        {
+            for (int i = RoomPlayers.Count-1; i >=0 ; i--)
+            {
+                var conn = RoomPlayers[i].connectionToClient;
+                var gamePlayerInstance = Instantiate(gamePlayerPrefab);
+                gamePlayerInstance.SetDisplayName(RoomPlayers[i].DisplayName);
+
+                NetworkServer.Destroy(conn.identity.gameObject);
+
+                NetworkServer.ReplacePlayerForConnection(conn, gamePlayerInstance.gameObject,true);
+            }
+        }
+        base.ServerChangeScene(newSceneName);
+    }
+    public override void OnServerSceneChanged(string sceneName)
+    {
+        if (sceneName.Contains("Multiplayer"))
+        {
+            GameObject playerSpawnSystemInstance = Instantiate(playerSpawnSystem);
+            NetworkServer.Spawn(playerSpawnSystemInstance);
+        }
+    }
+
+    public override void OnServerReady(NetworkConnection conn)
+    {
+        base.OnServerReady(conn);
+
+        OnServerReadied?.Invoke(conn);
     }
 }
