@@ -8,6 +8,7 @@ using Mirror;
 public class PlayerSpawnSystem : NetworkBehaviour
 {
     [SerializeField] GameObject playerPrefab = null;
+    [SerializeField] GameObject ballPrefab = null;
 
     static List<Transform> spawnPoints = new List<Transform>();
     int nextIndex = 0;
@@ -26,6 +27,7 @@ public class PlayerSpawnSystem : NetworkBehaviour
     [Server]
     public void SpawnPlayer(NetworkConnection conn)
     {
+        if (nextIndex == 0) { GameObject ballInstance = Instantiate(ballPrefab, Vector3.zero, Quaternion.identity); }
         Transform spawnPoint = spawnPoints.ElementAtOrDefault(nextIndex);
         if (spawnPoint == null)
         {
@@ -34,7 +36,7 @@ public class PlayerSpawnSystem : NetworkBehaviour
         }
 
         GameObject playerInstance = Instantiate(playerPrefab, spawnPoints[nextIndex].position,spawnPoints[nextIndex].rotation);
-        NetworkServer.AddPlayerForConnection(conn,playerInstance);//Changed from: NetworkServer.Spawn(playerInstance, conn);
+        NetworkServer.Spawn(playerInstance, conn);//NetworkServer.AddPlayerForConnection(conn,playerInstance);//Changed from: 
 
         nextIndex++;
     }

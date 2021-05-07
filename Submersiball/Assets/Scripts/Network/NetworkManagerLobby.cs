@@ -31,7 +31,7 @@ public class NetworkManagerLobby : NetworkManager
     public override void OnStartClient()
     {
         var spawnablePrefabs = Resources.LoadAll<GameObject>("SpawnablePrefabs");
-        foreach(var prefab in spawnPrefabs)
+        foreach(var prefab in spawnablePrefabs)
         {
             NetworkClient.RegisterPrefab(prefab);
         }

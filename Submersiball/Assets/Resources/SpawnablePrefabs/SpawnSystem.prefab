@@ -64,3 +64,4 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   playerPrefab: {fileID: 6310328763662273600, guid: fa726981751035e45974a87fab8ebc05, type: 3}
+  ballPrefab: {fileID: 2979466447401289237, guid: 14a2758563035fc489b4577e941ba7af, type: 3}
