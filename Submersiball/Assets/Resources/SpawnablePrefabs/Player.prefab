@@ -11578,7 +11578,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   ps: {fileID: 6923528222021325949}
-  speedDifForExplosion: 10
+  speedDifForExplosion: 1
 --- !u!1 &6725170249952234846
 GameObject:
   m_ObjectHideFlags: 0

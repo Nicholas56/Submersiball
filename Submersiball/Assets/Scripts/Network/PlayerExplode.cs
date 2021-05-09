@@ -21,13 +21,13 @@ public class PlayerExplode : NetworkBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    [ClientCallback]
+    [ServerCallback]
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Player")
         {
-            float velo1 = rb.velocity.magnitude;
-            float velo2 = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+            float velo2 = rb.velocity.magnitude;
+            float velo1 = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
             Debug.Log("Speed1: " + velo1 + " Speed2: " + velo2);
             if (velo2 > velo1 + speedDifForExplosion)
             {

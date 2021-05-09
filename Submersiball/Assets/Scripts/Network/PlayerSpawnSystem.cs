@@ -9,6 +9,7 @@ public class PlayerSpawnSystem : NetworkBehaviour
 {
     [SerializeField] GameObject playerPrefab = null;
     [SerializeField] GameObject ballPrefab = null;
+    [SerializeField] GameObject goalPrefab = null;
 
     static List<Transform> spawnPoints = new List<Transform>();
     int nextIndex = 0;
@@ -27,7 +28,12 @@ public class PlayerSpawnSystem : NetworkBehaviour
     [Server]
     public void SpawnPlayer(NetworkConnection conn)
     {
-        if (nextIndex == 0) { GameObject ballInstance = Instantiate(ballPrefab, Vector3.zero, Quaternion.identity); }
+        /*if (nextIndex == 0) 
+        { 
+            GameObject ballInstance = Instantiate(ballPrefab, Vector3.zero, Quaternion.identity); 
+            GameObject goalInstance = Instantiate(goalPrefab, new Vector3(0,0,74), Quaternion.Euler(90,0,0)); 
+            GameObject goalInstance2 = Instantiate(goalPrefab, new Vector3(0,0,-74), Quaternion.Euler(-90,0,0)); 
+        }*/
         Transform spawnPoint = spawnPoints.ElementAtOrDefault(nextIndex);
         if (spawnPoint == null)
         {
