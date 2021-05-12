@@ -9,6 +9,7 @@ public class SinglePlayerSetup : MonoBehaviour
     [Header("Screen Options")]
     [SerializeField] GameObject setupPanel;
     [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject guiPanel;
 
     [Header("Map Options")]
     [SerializeField] List<GameObject> maps;
@@ -157,10 +158,12 @@ public class SinglePlayerSetup : MonoBehaviour
     {
         UnlockCursor();
         pausePanel.SetActive(true);
+        guiPanel.SetActive(false);
     }
     public void UnPause()
     {
         LockCursor();
         pausePanel.SetActive(false);
+        guiPanel.SetActive(true);
     }
 }
