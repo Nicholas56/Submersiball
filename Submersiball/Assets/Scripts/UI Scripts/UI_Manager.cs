@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Mirror;
 
 public class UI_Manager : MonoBehaviour
 {
     [SerializeField] float startingTimeValue;
     float currentTimeValue;
-
-    [SerializeField] Image speedBar;
 
     [SerializeField] Slider speedSlider;
 
@@ -44,7 +43,7 @@ public class UI_Manager : MonoBehaviour
         teamTwoScore = startingScore;
         teamTwoScoreText.text = teamTwoScore.ToString();
 
-        subMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<SubmarineControl>();
+        subMovement = NetworkClient.localPlayer.gameObject.GetComponent<SubmarineControl>();
 
         currentTimeValue = startingTimeValue;
     }
