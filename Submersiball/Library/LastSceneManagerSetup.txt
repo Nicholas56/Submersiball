@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/MultiplayerGameWithUI.unity
+- path: Assets/Scenes/Ernest Scene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

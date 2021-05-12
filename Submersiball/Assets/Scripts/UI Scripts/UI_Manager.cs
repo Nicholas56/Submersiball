@@ -43,7 +43,7 @@ public class UI_Manager : MonoBehaviour
         teamTwoScore = startingScore;
         teamTwoScoreText.text = teamTwoScore.ToString();
 
-        subMovement = NetworkClient.localPlayer.gameObject.GetComponent<SubmarineControl>();
+        subMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<SubmarineControl>();
 
         currentTimeValue = startingTimeValue;
     }
@@ -101,4 +101,6 @@ public class UI_Manager : MonoBehaviour
         Vector3 targetPosition = ball.transform.position;
         ballPointer.transform.LookAt(targetPosition);
     }
+
+
 }
