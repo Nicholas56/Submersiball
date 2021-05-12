@@ -13,6 +13,7 @@ public class SinglePlayerSetup : MonoBehaviour
     [Header("Map Options")]
     [SerializeField] List<GameObject> maps;
     [SerializeField] GameObject lights;
+    [SerializeField] GameObject blackout;
     [SerializeField] GameObject mines;
     [SerializeField] GameObject ball;
     [SerializeField] GameObject playerSub;
@@ -90,11 +91,11 @@ public class SinglePlayerSetup : MonoBehaviour
     }
     public void ModeChoice(int choice)
     {
-        lights.SetActive(true);mines.SetActive(false);
+        lights.SetActive(true);mines.SetActive(false);blackout.SetActive(false);
         switch (choice)
         {
             case 1:mines.SetActive(true); break;
-            case 2:lights.SetActive(false); break;
+            case 2:lights.SetActive(false);blackout.SetActive(true); break;
             case 3:mines.SetActive(true);lights.SetActive(false); break;
         }
     }
