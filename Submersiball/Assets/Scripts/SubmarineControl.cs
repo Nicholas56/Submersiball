@@ -20,6 +20,9 @@ public class SubmarineControl : MonoBehaviour
     [SerializeField] float boostTime = 2;
     [SerializeField] float maxBoostTime = 2;
 
+    public float currentSpeed;
+    public float currentBoost;
+
     bool accel = false;
     bool boost = false;
 
@@ -66,6 +69,10 @@ public class SubmarineControl : MonoBehaviour
             if (boostTime <= 0.2f) { boost = false; }
         }
         else { boostTime = Mathf.Min(boostTime + Time.deltaTime, maxBoostTime); }
+
+        currentSpeed = rb.velocity.magnitude;
+
+        currentBoost = boostTime;
     }
 
     void Accelerate()
