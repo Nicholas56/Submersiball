@@ -6019,23 +6019,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1333668157009917021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4078636999580480869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 0
-  visible: 0
-  m_AssetId: 
-  hasSpawned: 0
 --- !u!1 &4779136958457100697
 GameObject:
   m_ObjectHideFlags: 0
@@ -12652,10 +12635,5 @@ Transform:
 --- !u!198 &6923528222021325949 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1090121046684163370, guid: 9717e97e4325afd48a537c2e8881544a, type: 3}
-  m_PrefabInstance: {fileID: 8013508391570786647}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4078636999580480869 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6318420334776302642, guid: 9717e97e4325afd48a537c2e8881544a, type: 3}
   m_PrefabInstance: {fileID: 8013508391570786647}
   m_PrefabAsset: {fileID: 0}
