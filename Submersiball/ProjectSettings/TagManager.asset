@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
+  - GoalLeft
+  - GoalRight
+  - UIManager
   layers:
   - Default
   - TransparentFX

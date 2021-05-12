@@ -6603,7 +6603,7 @@ GameObject:
   - component: {fileID: 1049563446}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: UIManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19114,6 +19114,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5795828579621181837, guid: 5f9c52b9a53fec140bef2d8e9e88a0ea, type: 3}
+      propertyPath: m_TagString
+      value: GoalRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138588678691150448, guid: 5f9c52b9a53fec140bef2d8e9e88a0ea, type: 3}
+      propertyPath: uiMan
+      value: 
+      objectReference: {fileID: 1049563446}
     - target: {fileID: 6138588678691150448, guid: 5f9c52b9a53fec140bef2d8e9e88a0ea, type: 3}
       propertyPath: ballRestartPos
       value: 
@@ -19608,6 +19616,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 5795828579621181837, guid: 5f9c52b9a53fec140bef2d8e9e88a0ea, type: 3}
+      propertyPath: m_TagString
+      value: GoalLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138588678691150448, guid: 5f9c52b9a53fec140bef2d8e9e88a0ea, type: 3}
+      propertyPath: uiMan
+      value: 
+      objectReference: {fileID: 1049563446}
     - target: {fileID: 6138588678691150448, guid: 5f9c52b9a53fec140bef2d8e9e88a0ea, type: 3}
       propertyPath: ballRestartPos
       value: 
