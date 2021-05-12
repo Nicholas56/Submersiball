@@ -18,6 +18,7 @@ public class SinglePlayerSetup : MonoBehaviour
     [SerializeField] GameObject mines;
     [SerializeField] GameObject ball;
     [SerializeField] GameObject playerSub;
+    [SerializeField] GameObject playerSub2;
     [SerializeField] GameObject goalie1;
     [SerializeField] GameObject goalie2;
     [SerializeField] List<GameObject> AISubs;
@@ -35,6 +36,8 @@ public class SinglePlayerSetup : MonoBehaviour
 
     [Header("Team Options")]
     [SerializeField] [Range(1, 2)] int playerTeam = 1;
+    public enum playstyle { Singleplayer, Multiplayer}
+    [SerializeField] playstyle style = playstyle.Singleplayer;
 
     [Header("Position Options")]
     [SerializeField] List<Transform> playerPositions;
@@ -119,8 +122,19 @@ public class SinglePlayerSetup : MonoBehaviour
 
         previousSpawns = new List<Transform>();
         int num = Random.Range(0, playerPositions.Count);
+        
         playerSub.transform.position = playerPositions[num].position;
+        playerSub.GetComponent<Rigidbody>().velocity = Vector3.zero;
         previousSpawns.Add(playerPositions[num]);
+
+        if (style==playstyle.Multiplayer)
+        {
+            num = (num+1)%playerPositions.Count;
+            playerSub2.transform.position = playerPositions[num].position;
+            playerSub2.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            previousSpawns.Add(playerPositions[num]);
+        }
+
         for (int i = 0; i < (numOfAI); i++)
         {
             num = Random.Range(0, playerPositions.Count);

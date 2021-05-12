@@ -11,6 +11,7 @@ public class SubmarineControl : MonoBehaviour
     CameraControl cc;
 
     Vector2 move;
+    Vector2 move2;
     Vector2 look;
 
     [Header("Movement Values")]
@@ -19,6 +20,9 @@ public class SubmarineControl : MonoBehaviour
     [SerializeField] float boostSpeed = 2f;
     [SerializeField] float boostTime = 2;
     [SerializeField] float maxBoostTime = 2;
+
+    [Header("Game")]
+    [SerializeField][Range(1,2)] int team = 1;
 
     public float currentSpeed;
     public float currentBoost;
@@ -31,9 +35,13 @@ public class SubmarineControl : MonoBehaviour
         controls = new PlayerControls();
 
         controls.Gameplay.Accelerate.performed += ctx => Accelerate();
+        controls.Gameplay.Accelerate2.performed += ctx => Accelerate2();
         controls.Gameplay.Boost.performed += ctx => Boost();
+        controls.Gameplay.Boost2.performed += ctx => Boost2();
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
+        controls.Gameplay.Move2.performed += ctx => move2 = ctx.ReadValue<Vector2>();
+        controls.Gameplay.Move2.canceled += ctx => move2 = Vector2.zero;
         controls.Gameplay.Look.performed += ctx => look = ctx.ReadValue<Vector2>();
         controls.Gameplay.Look.canceled += ctx => look = Vector2.zero;
         controls.Gameplay.Reset.performed += ctx => ResetCamera();
@@ -44,14 +52,28 @@ public class SubmarineControl : MonoBehaviour
     }
     private void Start()
     {
-        GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team1Mat);
+        if (team == 1)
+        {
+            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team1Mat);
+        }
+        else
+        {
+            GetComponent<SubMarineColor>().ChangeColors(GameManager.current.team2Mat);
+        }
     }
 
     private void Update()
     {
-        Vector2 m = new Vector2(move.x, move.y) * Time.deltaTime * 100;
-        cc.SetDeltaPos(new Vector2(look.x, look.y)*50);
-        transform.Rotate(new Vector3(m.y, m.x));
+        if (team == 1)
+        {
+            Turn(move);
+        }
+        else
+        {
+            Turn(move2);
+        }
+
+        cc.SetDeltaPos(new Vector2(look.x, look.y) * 50);
 
         if (accel)
         {
@@ -77,12 +99,16 @@ public class SubmarineControl : MonoBehaviour
 
     void Accelerate()
     {
+        if(team==1)
         accel = !accel;
     }
+    void Accelerate2() { if (team == 2) accel = !accel; }
     void Boost()
     {
+        if(team==1)
         boost = !boost;
     }
+    void Boost2() { if (team == 2) boost = !boost; }
     void ResetCamera()
     {
         cc.Revert();
@@ -90,6 +116,11 @@ public class SubmarineControl : MonoBehaviour
     void Pause()
     {
         SinglePlayerSetup.current.Pause();
+    }
+    private void Turn(Vector2 input)
+    {
+        Vector2 m = new Vector2(input.x, input.y) * Time.deltaTime * 100;
+        transform.Rotate(new Vector3(m.y, m.x));
     }
 
     private void OnEnable()

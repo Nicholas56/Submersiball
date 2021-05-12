@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ernest Scene.unity
     guid: 218cd2a03df23ec4dba3f976e1b22100
+  - enabled: 1
+    path: Assets/Scenes/TwoPlayerGame.unity
+    guid: dcea5ca3f15e9c84b846cee1dc0ed3c6
   m_configObjects: {}
