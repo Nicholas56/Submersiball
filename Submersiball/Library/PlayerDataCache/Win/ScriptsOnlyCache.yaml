@@ -34,8 +34,6 @@ ScriptsOnlyBuild:
     - Cinemachine.CinemachineVirtualCamera
     Mirror.Components.dll:
     - Mirror.NetworkTransform
-    Mirror.Editor.dll:
-    - Mirror.NetworkBehaviourInspector
     Mirror.dll:
     - Mirror.NetworkIdentity
     - kcp2k.KcpTransport
