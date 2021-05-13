@@ -29,6 +29,7 @@ public class SubmarineControl : MonoBehaviour
 
     bool accel = false;
     bool boost = false;
+    bool refilled = true;
 
     private void Awake()
     {
@@ -95,6 +96,8 @@ public class SubmarineControl : MonoBehaviour
         currentSpeed = rb.velocity.magnitude;
 
         currentBoost = boostTime;
+
+        RefillBoost();
     }
 
     void Accelerate()
@@ -131,4 +134,27 @@ public class SubmarineControl : MonoBehaviour
     {
         controls.Gameplay.Disable();
     }
+
+    public void StartBoostRefill()
+    {
+        refilled = false;
+        StartCoroutine("StopRefill");
+    }
+
+    void RefillBoost()
+    {
+        if (refilled == false)
+        {
+            boostTime = Mathf.Min(boostTime + Time.deltaTime, maxBoostTime);
+        }
+    }
+
+    IEnumerator StopRefill()
+    {
+        yield return new WaitForSeconds(2f);
+
+        refilled = true;   
+    }
+
+
 }
