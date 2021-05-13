@@ -88,9 +88,9 @@ public class SubmarineControl : MonoBehaviour
             //boostParticles.Play();
             rb.AddForce(transform.forward * boostSpeed, ForceMode.Acceleration);
             boostTime = Mathf.Max(boostTime - Time.deltaTime, 0);
-            if (boostTime <= 0.2f) { boost = false; }
+            if (boostTime <= 0.0f) { boost = false; }
         }
-        else { boostTime = Mathf.Min(boostTime + Time.deltaTime, maxBoostTime); }
+        else //{ boostTime = Mathf.Min(boostTime + Time.deltaTime, maxBoostTime); }
 
         currentSpeed = rb.velocity.magnitude;
 
