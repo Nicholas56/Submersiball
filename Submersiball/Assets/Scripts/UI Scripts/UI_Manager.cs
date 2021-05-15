@@ -33,18 +33,18 @@ public class UI_Manager : MonoBehaviour
 
     [SerializeField] GameObject ball;
 
+    public static UI_Manager current;
+
+    void Awake()
+    {
+        current = this;
+    }
+
     void Start()
     {
-
-        teamOneScore = startingScore;
-        teamOneScoreText.text = teamOneScore.ToString();
-
-        teamTwoScore = startingScore;
-        teamTwoScoreText.text = teamTwoScore.ToString();
-
         subMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<SubmarineControl>();
 
-        currentTimeValue = startingTimeValue;
+        SetInitialValues();
     }
 
     private void FixedUpdate()
@@ -101,5 +101,19 @@ public class UI_Manager : MonoBehaviour
         ballPointer.transform.LookAt(targetPosition);
     }
 
+    public void SetTime(float value)
+    {
+        startingTimeValue = value;
+    }
 
+    public void SetInitialValues()
+    {
+        teamOneScore = startingScore;
+        teamOneScoreText.text = teamOneScore.ToString();
+
+        teamTwoScore = startingScore;
+        teamTwoScoreText.text = teamTwoScore.ToString();
+
+        currentTimeValue = startingTimeValue;
+    }
 }

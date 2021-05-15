@@ -59,7 +59,8 @@ public class SinglePlayerSetup : MonoBehaviour
     private void Start()
     {
         ChangeTeam1Color(GameManager.current.team1Color);
-        ChangeTeam2Color(GameManager.current.team2Color);
+        ChangeTeam2Color(GameManager.current.team2Color); 
+        TimeChoice(0);DifficultyChoice(0);
     }
 
     public void BeginGame()
@@ -69,6 +70,8 @@ public class SinglePlayerSetup : MonoBehaviour
         PlacePlayers();
         ball.transform.position = Vector3.zero;
         ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        UI_Manager.current.SetInitialValues();
     }
 
     public void MapChoice(int mapNum)
@@ -115,6 +118,18 @@ public class SinglePlayerSetup : MonoBehaviour
             case 3:mines.SetActive(true);lights.SetActive(false); break;
         }
     }
+    public void TimeChoice(int choice)
+    {
+        switch (choice)
+        {
+            case 0: UI_Manager.current.SetTime(60f); break;
+            case 1: UI_Manager.current.SetTime(90f); break;
+            case 2: UI_Manager.current.SetTime(120f); break;
+            case 3: UI_Manager.current.SetTime(180f); break;
+            case 4: UI_Manager.current.SetTime(240f); break;
+            case 5: UI_Manager.current.SetTime(300f); break;
+        }
+    }
     public void ChangeTeam1Color(Color color)
     {
         if (team2Color.color == color) { return; }
@@ -148,7 +163,7 @@ public class SinglePlayerSetup : MonoBehaviour
 
         previousSpawns = new List<Transform>();
         int num = Random.Range(0, playerPositions.Count);
-        
+        Debug.Log("Placing players");
         playerSub.transform.position = playerPositions[num].position;
         playerSub.GetComponent<Rigidbody>().velocity = Vector3.zero;
         previousSpawns.Add(playerPositions[num]);

@@ -331,6 +331,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3800832361706927000}
+    - target: {fileID: 3280955494164862623, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3800832361706927000}
+    - target: {fileID: 3280955494164862623, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TimeChoice
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
 --- !u!224 &3800832361634686970 stripped
