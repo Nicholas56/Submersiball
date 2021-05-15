@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SinglePlayerSetup : MonoBehaviour
 {
@@ -36,6 +37,12 @@ public class SinglePlayerSetup : MonoBehaviour
 
     [Header("Team Options")]
     [SerializeField] [Range(1, 2)] int playerTeam = 1;
+    [SerializeField] Image team1Color;
+    [SerializeField] Image team2Color;
+    [SerializeField] Material team1Material;
+    [SerializeField] Material team2Material;
+    [SerializeField] Material team1Arena;
+    [SerializeField] Material team2Arena;
     public enum playstyle { Singleplayer, Multiplayer}
     [SerializeField] playstyle style = playstyle.Singleplayer;
 
@@ -49,7 +56,12 @@ public class SinglePlayerSetup : MonoBehaviour
         currentMap = maps[0];
         Goalie1Choice(0);Goalie2Choice(0);
     }
-    
+    private void Start()
+    {
+        ChangeTeam1Color(GameManager.current.team1Color);
+        ChangeTeam2Color(GameManager.current.team2Color);
+    }
+
     public void BeginGame()
     {
         UnPause();
@@ -102,6 +114,20 @@ public class SinglePlayerSetup : MonoBehaviour
             case 2:lights.SetActive(false);blackout.SetActive(true); break;
             case 3:mines.SetActive(true);lights.SetActive(false); break;
         }
+    }
+    public void ChangeTeam1Color(Color color)
+    {
+        if (team2Color.color == color) { return; }
+        team1Color.color = color;
+        team1Material.color = color;
+        team1Arena.color = color;
+    }
+    public void ChangeTeam2Color(Color color)
+    {
+        if (team1Color.color == color) { return; }
+        team2Color.color = color;
+        team2Material.color = color;
+        team2Arena.color = color;
     }
     void UnlockCursor()
     {

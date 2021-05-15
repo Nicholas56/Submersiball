@@ -10,6 +10,7 @@ public class GoalCheck : MonoBehaviour
 
     private void Start()
     {
+        if(GameObject.FindGameObjectWithTag("UIManager"))
         uiMan = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UI_Manager>();
     }
 
