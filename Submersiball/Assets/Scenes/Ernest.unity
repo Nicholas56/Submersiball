@@ -1238,6 +1238,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3621219634716384944, guid: d43d6717af946b44e9c9dd59bd7bc89c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621219634716384944, guid: d43d6717af946b44e9c9dd59bd7bc89c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800832361282166905, guid: d43d6717af946b44e9c9dd59bd7bc89c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800832361282166905, guid: d43d6717af946b44e9c9dd59bd7bc89c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3800832361634686969, guid: d43d6717af946b44e9c9dd59bd7bc89c, type: 3}
       propertyPath: ball
       value: 
@@ -1369,6 +1385,22 @@ PrefabInstance:
     - target: {fileID: 3800832362846380714, guid: d43d6717af946b44e9c9dd59bd7bc89c, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4213560180156386304, guid: d43d6717af946b44e9c9dd59bd7bc89c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4213560180156386304, guid: d43d6717af946b44e9c9dd59bd7bc89c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758766682098562795, guid: d43d6717af946b44e9c9dd59bd7bc89c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758766682098562795, guid: d43d6717af946b44e9c9dd59bd7bc89c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d43d6717af946b44e9c9dd59bd7bc89c, type: 3}
