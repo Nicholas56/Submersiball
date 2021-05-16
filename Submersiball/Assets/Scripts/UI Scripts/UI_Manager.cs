@@ -9,17 +9,24 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] float startingTimeValue;
     float currentTimeValue;
 
-    [SerializeField] Slider speedSlider;
+    [SerializeField] SubmarineControl playerOne;
 
-    [SerializeField] Slider boostSlider;
+    [SerializeField] SubmarineControl playerTwo;
 
-    SubmarineControl subMovement;
+    [SerializeField] Slider speedSliderPlayerOne;
+
+    [SerializeField] Slider speedSliderPlayerTwo;
+
+    [SerializeField] Slider boostSliderPlayerOne;
+
+    [SerializeField] Slider boostSliderPlayerTwo;
+
+    [SerializeField] GameObject propellerPlayerOne;
+
+    [SerializeField] GameObject propellerPlayerTwo;
+
 
     [SerializeField] TextMeshProUGUI timeText;
-
-    [SerializeField] GameObject propeller;
-
-    [SerializeField] GameObject ballPointer;
 
     [SerializeField] TextMeshProUGUI teamOneScoreText;
 
@@ -40,7 +47,6 @@ public class UI_Manager : MonoBehaviour
 
     void Start()
     {
-        subMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<SubmarineControl>();
 
         SetInitialValues();
     }
@@ -56,7 +62,7 @@ public class UI_Manager : MonoBehaviour
     {
         DisplayTime();
 
-        propeller.transform.Rotate(new Vector3(0f, 0f, 100f) * subMovement.currentSpeed / 500);
+        UpdatePropeller();
     }
 
     private void DisplayTime()
@@ -83,12 +89,16 @@ public class UI_Manager : MonoBehaviour
 
     public void UpdateSpeedBar()
     {
-        speedSlider.value = Mathf.Lerp(subMovement.currentSpeed, subMovement.currentSpeed, 5);
+        speedSliderPlayerOne.value = playerOne.currentSpeed;
+
+        speedSliderPlayerTwo.value = playerTwo.currentSpeed;
     }
 
     public void UpdateBoostBar()
     {
-        boostSlider.value = subMovement.currentBoost;
+        boostSliderPlayerOne.value = playerOne.currentBoost;
+
+        boostSliderPlayerTwo.value = playerTwo.currentBoost;
     }
 
     public void SetTime(float value)
@@ -105,5 +115,26 @@ public class UI_Manager : MonoBehaviour
         teamTwoScoreText.text = teamTwoScore.ToString();
 
         currentTimeValue = startingTimeValue;
+    }
+
+    public void UpdatePropeller()
+    {
+        if (playerOne.GetComponent<SubmarineControl>().accelUI)
+        {
+            propellerPlayerOne.transform.Rotate(new Vector3(0f, 0f, 100f) * playerOne.currentSpeed / 800);
+        }
+        else
+        {
+            propellerPlayerOne.transform.Rotate(new Vector3(0f, 0f, 100f) * playerOne.currentSpeed / Mathf.Lerp(800, 2000, 3));
+        }
+
+        if (playerTwo.GetComponent<SubmarineControl>().accelUI)
+        {
+            propellerPlayerTwo.transform.Rotate(new Vector3(0f, 0f, 100f) * playerTwo.currentSpeed / 800);
+        }
+        else
+        {
+            propellerPlayerTwo.transform.Rotate(new Vector3(0f, 0f, 100f) * playerTwo.currentSpeed / Mathf.Lerp(800, 2000, 3));
+        }
     }
 }

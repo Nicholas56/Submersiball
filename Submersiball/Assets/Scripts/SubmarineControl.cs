@@ -31,6 +31,8 @@ public class SubmarineControl : MonoBehaviour
     bool boost = false;
     bool refilled = true;
 
+    public bool accelUI = false;
+
     private void Awake()
     {
         controls = new PlayerControls();
@@ -78,21 +80,28 @@ public class SubmarineControl : MonoBehaviour
 
         if (accel)
         {
-            
-
             if (rb.velocity.magnitude <= maxSpeed)
             {
                 rb.AddForce(transform.forward * moveSpeed, ForceMode.Force);
             }
 
             Debug.Log(rb.velocity.magnitude);
+
+            accelUI = true;
         }
+        else
+        {
+            accelUI = false;
+        }
+
+        
         if (boostTime > 0 && boost)
         {
             //boostParticles.Play();
             rb.AddForce(transform.forward * boostSpeed, ForceMode.Acceleration);
             boostTime = Mathf.Max(boostTime - Time.deltaTime, 0);
             if (boostTime <= 0.0f) { boost = false; }
+            currentSpeed = rb.velocity.magnitude;
         }
         else //{ boostTime = Mathf.Min(boostTime + Time.deltaTime, maxBoostTime); }
 

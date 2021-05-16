@@ -12,6 +12,8 @@ TagManager:
   - Pointer2
   - Pointer3
   - Pointer4
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
