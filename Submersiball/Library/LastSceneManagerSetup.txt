@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Ernest Scene.unity
+- path: Assets/Scenes/Ernest.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

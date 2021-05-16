@@ -8,6 +8,10 @@ TagManager:
   - GoalLeft
   - GoalRight
   - UIManager
+  - Pointer1
+  - Pointer2
+  - Pointer3
+  - Pointer4
   layers:
   - Default
   - TransparentFX

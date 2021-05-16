@@ -78,11 +78,14 @@ public class SubmarineControl : MonoBehaviour
 
         if (accel)
         {
-            rb.AddForce(transform.forward * moveSpeed, ForceMode.Force);
-            if (rb.velocity.magnitude > maxSpeed)
+            
+
+            if (rb.velocity.magnitude <= maxSpeed)
             {
-                rb.AddForce(transform.forward * -moveSpeed, ForceMode.Force);
+                rb.AddForce(transform.forward * moveSpeed, ForceMode.Force);
             }
+
+            Debug.Log(rb.velocity.magnitude);
         }
         if (boostTime > 0 && boost)
         {

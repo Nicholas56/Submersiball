@@ -31,8 +31,6 @@ public class UI_Manager : MonoBehaviour
 
     int teamTwoScore;
 
-    [SerializeField] GameObject ball;
-
     public static UI_Manager current;
 
     void Awake()
@@ -52,8 +50,6 @@ public class UI_Manager : MonoBehaviour
         UpdateSpeedBar();
 
         UpdateBoostBar();
-
-        UpdateBallPointer();
     }
 
     void Update()
@@ -87,18 +83,12 @@ public class UI_Manager : MonoBehaviour
 
     public void UpdateSpeedBar()
     {
-        speedSlider.value = subMovement.currentSpeed;
+        speedSlider.value = Mathf.Lerp(subMovement.currentSpeed, subMovement.currentSpeed, 5);
     }
 
     public void UpdateBoostBar()
     {
         boostSlider.value = subMovement.currentBoost;
-    }
-
-    public void UpdateBallPointer()
-    {
-        Vector3 targetPosition = ball.transform.position;
-        ballPointer.transform.LookAt(targetPosition);
     }
 
     public void SetTime(float value)
