@@ -15,6 +15,7 @@ TagManager:
   - Player1
   - Player2
   - BoostLocation
+  - PickupLocation
   layers:
   - Default
   - TransparentFX

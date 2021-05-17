@@ -6,9 +6,11 @@ public class PickUpManager : MonoBehaviour
 {
     public static PickUpManager current;
 
-    [SerializeField] GameObject[] boostPickupLocations;
+    GameObject[] allPickupLocations;
+    GameObject[] freePickupLocations;
+    GameObject[] takenPickupLocations;
 
-    [SerializeField]
+    [SerializeField] GameObject[] pickups;
 
     private void Awake()
     {
@@ -17,12 +19,9 @@ public class PickUpManager : MonoBehaviour
 
     private void Start()
     {
-        boostPickupLocations = GameObject.FindGameObjectsWithTag("BoostLocation");
-    }
+        allPickupLocations = GameObject.FindGameObjectsWithTag("PickupLocation");
 
-    public void SpawnBoostPickup(Transform spawnLocation, GameObject boostPickup)
-    {
-        Instantiate(boostPickup, spawnLocation);
+        freePickupLocations = allPickupLocations;
     }
 }
     
