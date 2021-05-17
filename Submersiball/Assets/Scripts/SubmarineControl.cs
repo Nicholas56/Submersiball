@@ -104,8 +104,18 @@ public class SubmarineControl : MonoBehaviour
             currentSpeed = rb.velocity.magnitude;
         }
         else //{ boostTime = Mathf.Min(boostTime + Time.deltaTime, maxBoostTime); }
+        {
+            boost = false;
+        }
 
-        currentSpeed = rb.velocity.magnitude;
+        if(rb.velocity.magnitude > 14.5f && !boost)
+        {
+            currentSpeed = 14.5f;
+        }
+        else
+        {
+            currentSpeed = rb.velocity.magnitude;
+        }
 
         currentBoost = boostTime;
 

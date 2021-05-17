@@ -29,9 +29,7 @@ public class BoostPickUp : MonoBehaviour
 
             SphereCol.enabled = false;
 
-            StartCoroutine("RespawnBoostPickUp", 5);
-
-            anim.SetBool("Grow", false);
+            StartCoroutine("RespawnBoostPickUp", 10);
         }
     }
 
@@ -39,10 +37,15 @@ public class BoostPickUp : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
 
+        anim.SetBool("Grow", true);
+
         meshRen.enabled = true;
 
         SphereCol.enabled = true;
+    }
 
-        anim.SetBool("Grow", true);
+    public void DisableGrow()
+    {
+        anim.SetBool("Grow", false);
     }
 }
