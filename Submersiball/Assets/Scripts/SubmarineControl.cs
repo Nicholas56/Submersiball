@@ -80,7 +80,7 @@ public class SubmarineControl : MonoBehaviour
 
         cc.SetDeltaPos(new Vector2(look.x, look.y) * 50);
 
-        if (accel)
+        if (accel&&SinglePlayerSetup.current.inPlay)
         {
             if (rb.velocity.magnitude <= maxSpeed)
             {
@@ -134,23 +134,23 @@ public class SubmarineControl : MonoBehaviour
 
     void Accelerate()
     {
-        if(team==1)
+        if(team==1&&SinglePlayerSetup.current.inPlay)
         accel = !accel;
     }
-    void Accelerate2() { if (team == 2) accel = !accel; }
+    void Accelerate2() { if (team == 2&&SinglePlayerSetup.current.inPlay) accel = !accel; }
     void Boost()
     {
-        if(team==1)
+        if(team==1&& SinglePlayerSetup.current.inPlay)
         boost = !boost;
     }
-    void Boost2() { if (team == 2) boost = !boost; }
+    void Boost2() { if (team == 2&& SinglePlayerSetup.current.inPlay) boost = !boost; }
     void ResetCamera()
     {
         cc.Revert();
     }
     void Pause()
     {
-        SinglePlayerSetup.current.Pause();
+        if (SinglePlayerSetup.current.inPlay) { SinglePlayerSetup.current.Pause(); }
     }
     private void Turn(Vector2 input)
     {

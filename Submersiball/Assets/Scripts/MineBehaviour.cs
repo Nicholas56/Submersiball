@@ -11,6 +11,7 @@ public class MineBehaviour : MonoBehaviour
     private void Awake()
     {
         ps = GetComponent<ParticleSystem>();
+        if (respawnTime > 0 && respawnTime <= 3) { respawnTime = 3.5f; }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -29,8 +30,9 @@ public class MineBehaviour : MonoBehaviour
     {
         ps.Play();
         if (respawnTime > 0) { StartCoroutine("Respawn"); }
-        gameObject.SetActive(false);
+        Invoke("RemoveMine", 3);
     }
+    void RemoveMine() { gameObject.SetActive(false); }
 
     IEnumerator Respawn()
     {

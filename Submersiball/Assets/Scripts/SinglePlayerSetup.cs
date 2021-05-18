@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SinglePlayerSetup : MonoBehaviour
 {
     public static SinglePlayerSetup current;
+    public bool inPlay = false;
 
     [Header("Screen Options")]
     [SerializeField] GameObject setupPanel;
@@ -60,7 +61,7 @@ public class SinglePlayerSetup : MonoBehaviour
     {
         ChangeTeam1Color(GameManager.current.team1Color);
         ChangeTeam2Color(GameManager.current.team2Color); 
-        TimeChoice(0);DifficultyChoice(0);
+        TimeChoice(0);DifficultyChoice(0);ModeChoice(0);
     }
 
     public void BeginGame()
@@ -163,9 +164,10 @@ public class SinglePlayerSetup : MonoBehaviour
 
         previousSpawns = new List<Transform>();
         int num = Random.Range(0, playerPositions.Count);
-        Debug.Log("Placing players");
+        Debug.Log(playerSub.GetComponent<Rigidbody>().velocity);
         playerSub.transform.position = playerPositions[num].position;
         playerSub.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        playerSub.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         previousSpawns.Add(playerPositions[num]);
 
         if (style==playstyle.Multiplayer)
@@ -204,21 +206,25 @@ public class SinglePlayerSetup : MonoBehaviour
     }
     public void EndSession()
     {
+        PlacePlayers();
         UnlockCursor();
         setupPanel.SetActive(true);
 
         HideSubs();
+        inPlay = false;
     }
     public void Pause()
     {
         UnlockCursor();
         pausePanel.SetActive(true);
         guiPanel.SetActive(false);
+        inPlay = false;
     }
     public void UnPause()
     {
         LockCursor();
         pausePanel.SetActive(false);
         guiPanel.SetActive(true);
+        inPlay = true;
     }
 }

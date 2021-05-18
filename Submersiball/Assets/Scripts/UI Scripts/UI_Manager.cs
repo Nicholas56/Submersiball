@@ -38,7 +38,7 @@ public class UI_Manager : MonoBehaviour
 
     int teamTwoScore;
 
-    public static UI_Manager current;
+    public static UI_Manager current;    
 
     void Awake()
     {
