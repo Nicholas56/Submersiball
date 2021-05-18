@@ -89,6 +89,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Stick"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Item"",
+                    ""type"": ""Button"",
+                    ""id"": ""3014c209-7ca4-4633-9e7e-fedc3efe866a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Item2"",
+                    ""type"": ""Button"",
+                    ""id"": ""e263f27a-5a39-4f97-8342-ce6d470a772a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -355,6 +371,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Move2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13825af1-3cab-424d-8352-0b4739055c75"",
+                    ""path"": ""<Keyboard>/leftAlt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Item"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61084b03-10c4-42a2-ab68-a5c9fed8ec0b"",
+                    ""path"": ""<Keyboard>/rightAlt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Item2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -372,6 +410,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_Accelerate2 = m_Gameplay.FindAction("Accelerate2", throwIfNotFound: true);
         m_Gameplay_Boost2 = m_Gameplay.FindAction("Boost2", throwIfNotFound: true);
         m_Gameplay_Move2 = m_Gameplay.FindAction("Move2", throwIfNotFound: true);
+        m_Gameplay_Item = m_Gameplay.FindAction("Item", throwIfNotFound: true);
+        m_Gameplay_Item2 = m_Gameplay.FindAction("Item2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -430,6 +470,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Accelerate2;
     private readonly InputAction m_Gameplay_Boost2;
     private readonly InputAction m_Gameplay_Move2;
+    private readonly InputAction m_Gameplay_Item;
+    private readonly InputAction m_Gameplay_Item2;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -443,6 +485,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Accelerate2 => m_Wrapper.m_Gameplay_Accelerate2;
         public InputAction @Boost2 => m_Wrapper.m_Gameplay_Boost2;
         public InputAction @Move2 => m_Wrapper.m_Gameplay_Move2;
+        public InputAction @Item => m_Wrapper.m_Gameplay_Item;
+        public InputAction @Item2 => m_Wrapper.m_Gameplay_Item2;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -479,6 +523,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Move2.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove2;
                 @Move2.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove2;
                 @Move2.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove2;
+                @Item.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnItem;
+                @Item.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnItem;
+                @Item.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnItem;
+                @Item2.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnItem2;
+                @Item2.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnItem2;
+                @Item2.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnItem2;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -510,6 +560,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Move2.started += instance.OnMove2;
                 @Move2.performed += instance.OnMove2;
                 @Move2.canceled += instance.OnMove2;
+                @Item.started += instance.OnItem;
+                @Item.performed += instance.OnItem;
+                @Item.canceled += instance.OnItem;
+                @Item2.started += instance.OnItem2;
+                @Item2.performed += instance.OnItem2;
+                @Item2.canceled += instance.OnItem2;
             }
         }
     }
@@ -525,5 +581,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnAccelerate2(InputAction.CallbackContext context);
         void OnBoost2(InputAction.CallbackContext context);
         void OnMove2(InputAction.CallbackContext context);
+        void OnItem(InputAction.CallbackContext context);
+        void OnItem2(InputAction.CallbackContext context);
     }
 }

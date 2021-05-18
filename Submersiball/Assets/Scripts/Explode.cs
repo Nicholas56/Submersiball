@@ -15,6 +15,12 @@ public class Explode : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    public void Explosion()
+    {
+        ps.Play();
+        StartCoroutine("Respawn");
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Player") 
@@ -23,8 +29,7 @@ public class Explode : MonoBehaviour
             float velo2 = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
             if (velo2 > velo1 + speedDifForExplosion)
             {
-                ps.Play();
-                StartCoroutine("Respawn");
+                Explosion();
             }
         }
     }

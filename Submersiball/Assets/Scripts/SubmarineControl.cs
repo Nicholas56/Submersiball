@@ -15,9 +15,9 @@ public class SubmarineControl : MonoBehaviour
     Vector2 look;
 
     [Header("Movement Values")]
-    [SerializeField] float moveSpeed = 5.0f;
-    [SerializeField] float maxSpeed = 10.0f;
-    [SerializeField] float boostSpeed = 2f;
+    [SerializeField] float moveSpeed = 8.0f;
+    [SerializeField] float maxSpeed = 15.0f;
+    [SerializeField] float boostSpeed = 8f;
     [SerializeField] float boostTime = 2;
     [SerializeField] float maxBoostTime = 2;
 
@@ -49,6 +49,8 @@ public class SubmarineControl : MonoBehaviour
         controls.Gameplay.Look.canceled += ctx => look = Vector2.zero;
         controls.Gameplay.Reset.performed += ctx => ResetCamera();
         controls.Gameplay.Pause.performed += ctx => Pause();
+        controls.Gameplay.Item.performed += ctx => UseItem();
+        controls.Gameplay.Item2.performed += ctx => UseItem2();
 
         rb = GetComponent<Rigidbody>();
         cc = GetComponentInChildren<CameraControl>(); 
@@ -120,6 +122,14 @@ public class SubmarineControl : MonoBehaviour
         currentBoost = boostTime;
 
         RefillBoost();
+    }
+    void UseItem()
+    {
+        //code to use pickups goes here
+    }
+    void UseItem2()
+    {
+        //and here (player 2)
     }
 
     void Accelerate()
