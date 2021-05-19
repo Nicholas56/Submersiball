@@ -4,32 +4,27 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    Transform rotatePoint;
-    Quaternion initialRotation;
-    Vector3 initialPosition;
+    [Header("Transforms")]
+    [SerializeField]Transform rotatePoint;
+    [SerializeField]Transform lookAtPoint;
+    [SerializeField]float lookDistance = 10;
+    Vector3 lookAtVector;
+    bool lookAtBall;
 
-    Vector3 deltaPos;
-
-    [SerializeField] float xSensitivity = 0.1f;
-    [SerializeField] float ySensitivity = 0.1f;
 
     private void Start()
     {
-        rotatePoint = transform.parent;
-        initialRotation = transform.localRotation;
-        initialPosition = transform.localPosition;
     }
 
     private void FixedUpdate()
     {
-        transform.RotateAround(rotatePoint.position, transform.up, deltaPos.x * xSensitivity);
-        transform.RotateAround(rotatePoint.position, transform.right, deltaPos.y * ySensitivity);
+        transform.position = rotatePoint.position - (lookDistance * FindVectorToTarget(lookAtPoint, rotatePoint));
+        transform.LookAt(lookAtPoint);
     }
 
-    public void Revert()
+    Vector3 FindVectorToTarget(Transform target, Transform rotateAround)
     {
-        transform.localRotation = initialRotation; 
-        transform.localPosition = initialPosition;
+        lookAtVector = (lookAtPoint.position - rotateAround.position).normalized;
+        return lookAtVector;
     }
-    public void SetDeltaPos(Vector2 newDelta) { deltaPos = newDelta; }
 }

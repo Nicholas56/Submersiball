@@ -6,6 +6,7 @@ using System.Collections;
 public class ReverseNormals : MonoBehaviour
 {
 	[SerializeField] bool addCollider = false;
+	[SerializeField] PhysicMaterial physicMaterial = null;
 	void Start()
 	{
 		MeshFilter filter = GetComponent(typeof(MeshFilter)) as MeshFilter;
@@ -30,6 +31,11 @@ public class ReverseNormals : MonoBehaviour
 				mesh.SetTriangles(triangles, m);
 			}
 		}
-		if (addCollider) { gameObject.AddComponent<MeshCollider>(); }
+		if (addCollider) 
+		{
+			gameObject.AddComponent<MeshCollider>();
+			if(physicMaterial!=null)
+			GetComponent<MeshCollider>().material = physicMaterial;
+		}
 	}
 }

@@ -45,7 +45,7 @@ public class SinglePlayerSetup : MonoBehaviour
     [SerializeField] Material team1Arena;
     [SerializeField] Material team2Arena;
     public enum playstyle { Singleplayer, Multiplayer}
-    [SerializeField] playstyle style = playstyle.Singleplayer;
+    public playstyle style = playstyle.Singleplayer;
 
     [Header("Position Options")]
     [SerializeField] List<Transform> playerPositions;
@@ -164,7 +164,6 @@ public class SinglePlayerSetup : MonoBehaviour
 
         previousSpawns = new List<Transform>();
         int num = Random.Range(0, playerPositions.Count);
-        Debug.Log(playerSub.GetComponent<Rigidbody>().velocity);
         playerSub.transform.position = playerPositions[num].position;
         playerSub.GetComponent<Rigidbody>().velocity = Vector3.zero;
         playerSub.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;

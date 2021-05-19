@@ -90,15 +90,15 @@ public class UI_Manager : MonoBehaviour
     public void UpdateSpeedBar()
     {
         speedSliderPlayerOne.value = playerOne.currentSpeed;
-
+        if(SinglePlayerSetup.current.style==SinglePlayerSetup.playstyle.Multiplayer)
         speedSliderPlayerTwo.value = playerTwo.currentSpeed;
     }
 
     public void UpdateBoostBar()
     {
         boostSliderPlayerOne.value = playerOne.currentBoost;
-
-        boostSliderPlayerTwo.value = playerTwo.currentBoost;
+        if (SinglePlayerSetup.current.style == SinglePlayerSetup.playstyle.Multiplayer)
+            boostSliderPlayerTwo.value = playerTwo.currentBoost;
     }
 
     public void SetTime(float value)
@@ -127,14 +127,16 @@ public class UI_Manager : MonoBehaviour
         {
             propellerPlayerOne.transform.Rotate(new Vector3(0f, 0f, 100f) * playerOne.currentSpeed / Mathf.Lerp(800, 2000, 3));
         }
-
-        if (playerTwo.GetComponent<SubmarineControl>().accelUI)
+        if (SinglePlayerSetup.current.style == SinglePlayerSetup.playstyle.Multiplayer)
         {
-            propellerPlayerTwo.transform.Rotate(new Vector3(0f, 0f, 100f) * playerTwo.currentSpeed / 800);
-        }
-        else
-        {
-            propellerPlayerTwo.transform.Rotate(new Vector3(0f, 0f, 100f) * playerTwo.currentSpeed / Mathf.Lerp(800, 2000, 3));
+            if (playerTwo.GetComponent<SubmarineControl>().accelUI)
+            {
+                propellerPlayerTwo.transform.Rotate(new Vector3(0f, 0f, 100f) * playerTwo.currentSpeed / 800);
+            }
+            else
+            {
+                propellerPlayerTwo.transform.Rotate(new Vector3(0f, 0f, 100f) * playerTwo.currentSpeed / Mathf.Lerp(800, 2000, 3));
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ public class SubmarineControl : MonoBehaviour
 {
     PlayerControls controls;
     Rigidbody rb;
-    CameraControl cc;
+    //CameraControl cc;
 
     Vector2 move;
     Vector2 move2;
@@ -23,6 +23,7 @@ public class SubmarineControl : MonoBehaviour
 
     [Header("Game")]
     [SerializeField][Range(1,2)] int team = 1;
+    [SerializeField] ParticleSystem boostEffects;
 
     public float currentSpeed;
     public float currentBoost;
@@ -53,7 +54,7 @@ public class SubmarineControl : MonoBehaviour
         controls.Gameplay.Item2.performed += ctx => UseItem2();
 
         rb = GetComponent<Rigidbody>();
-        cc = GetComponentInChildren<CameraControl>(); 
+        //cc = GetComponentInChildren<CameraControl>(); 
     }
     private void Start()
     {
@@ -78,7 +79,7 @@ public class SubmarineControl : MonoBehaviour
             Turn(move2);
         }
 
-        cc.SetDeltaPos(new Vector2(look.x, look.y) * 50);
+        //cc.SetDeltaPos(new Vector2(look.x, look.y) * 50);
 
         if (accel&&SinglePlayerSetup.current.inPlay)
         {
@@ -99,15 +100,15 @@ public class SubmarineControl : MonoBehaviour
         
         if (boostTime > 0 && boost)
         {
-            //boostParticles.Play();
             rb.AddForce(transform.forward * boostSpeed, ForceMode.Acceleration);
             boostTime = Mathf.Max(boostTime - Time.deltaTime, 0);
-            if (boostTime <= 0.0f) { boost = false; }
+            if (boostTime <= 0.0f) { boost = false;ToggleBoostEffect(); }
             currentSpeed = rb.velocity.magnitude;
         }
         else //{ boostTime = Mathf.Min(boostTime + Time.deltaTime, maxBoostTime); }
         {
             boost = false;
+            ToggleBoostEffect();
         }
 
         if(rb.velocity.magnitude > 14.5f && !boost)
@@ -142,11 +143,21 @@ public class SubmarineControl : MonoBehaviour
     {
         if(team==1&& SinglePlayerSetup.current.inPlay)
         boost = !boost;
+        ToggleBoostEffect();
     }
-    void Boost2() { if (team == 2&& SinglePlayerSetup.current.inPlay) boost = !boost; }
+    void Boost2() 
+    {
+        if (team == 2&& SinglePlayerSetup.current.inPlay) boost = !boost;
+        ToggleBoostEffect();
+    }
+    void ToggleBoostEffect()
+    {
+        if (!boost) { boostEffects.Stop(true, ParticleSystemStopBehavior.StopEmitting); }
+        else { boostEffects.Play(); }
+    }
     void ResetCamera()
     {
-        cc.Revert();
+        //cc.Revert();
     }
     void Pause()
     {
