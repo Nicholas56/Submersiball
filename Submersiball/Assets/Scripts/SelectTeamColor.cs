@@ -11,7 +11,13 @@ public class SelectTeamColor : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (teamNum == 1) { SinglePlayerSetup.current.ChangeTeam1Color(colorChoice.color); }
-        else { SinglePlayerSetup.current.ChangeTeam2Color(colorChoice.color); }
+        if (teamNum == 1) 
+        { 
+            GameEvents.current.ChangeTeam1Color(colorChoice.color);
+        }
+        else 
+        {
+            GameEvents.current.ChangeTeam2Color(colorChoice.color);
+        }
     }
 }

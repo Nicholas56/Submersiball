@@ -62,8 +62,15 @@ public class SinglePlayerSetup : MonoBehaviour
         ChangeTeam1Color(GameManager.current.team1Color);
         ChangeTeam2Color(GameManager.current.team2Color); 
         TimeChoice(0);DifficultyChoice(0);ModeChoice(0);
-    }
 
+        GameEvents.current.onChangeTeam1Color += ChangeTeam1Color;
+        GameEvents.current.onChangeTeam2Color += ChangeTeam2Color;
+    }
+    private void OnDestroy()
+    {
+        GameEvents.current.onChangeTeam1Color -= ChangeTeam1Color;
+        GameEvents.current.onChangeTeam2Color -= ChangeTeam2Color;
+    }
     public void BeginGame()
     {
         UnPause();
@@ -73,6 +80,7 @@ public class SinglePlayerSetup : MonoBehaviour
         ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         UI_Manager.current.SetInitialValues();
+        GameEvents.current.StartMatch();
     }
 
     public void MapChoice(int mapNum)
@@ -137,6 +145,7 @@ public class SinglePlayerSetup : MonoBehaviour
         team1Color.color = color;
         team1Material.color = color;
         team1Arena.color = color;
+        GameManager.current.team1Color = color;
     }
     public void ChangeTeam2Color(Color color)
     {
@@ -144,6 +153,7 @@ public class SinglePlayerSetup : MonoBehaviour
         team2Color.color = color;
         team2Material.color = color;
         team2Arena.color = color;
+        GameManager.current.team2Color = color;
     }
     void UnlockCursor()
     {
@@ -211,6 +221,7 @@ public class SinglePlayerSetup : MonoBehaviour
 
         HideSubs();
         inPlay = false;
+        GameEvents.current.EndMatch();
     }
     public void Pause()
     {

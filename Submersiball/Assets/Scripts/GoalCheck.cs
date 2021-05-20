@@ -36,11 +36,12 @@ public class GoalCheck : MonoBehaviour
     private void ScoreLeft()
     {
         uiMan.ScoreTeamOne();
+        GameEvents.current.ScoreGoal();
     }
 
     private void ScoreRight()
     {
         uiMan.ScoreTeamTwo();
-
+        GameEvents.current.ScoreGoal();
     }
 }

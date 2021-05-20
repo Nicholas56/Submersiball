@@ -30,6 +30,7 @@ public class Explode : MonoBehaviour
             if (velo2 > velo1 + speedDifForExplosion)
             {
                 Explosion();
+                GameEvents.current.Explode();
             }
         }
     }

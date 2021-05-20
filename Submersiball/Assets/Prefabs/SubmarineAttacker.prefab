@@ -12241,7 +12241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ps: {fileID: 6320592239622861518}
   respawnPoint: {x: 0, y: 0, z: 0}
-  speedDifForExplosion: 10
+  speedDifForExplosion: 1
 --- !u!114 &9181838025744601814
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -135,8 +135,9 @@ public class SubmarineControl : MonoBehaviour
 
     void Accelerate()
     {
-        if(team==1&&SinglePlayerSetup.current.inPlay)
-        accel = !accel;
+        if (team == 1 && SinglePlayerSetup.current.inPlay)
+            accel = !accel;
+        GameEvents.current.Accelerate(accel);
     }
     void Accelerate2() { if (team == 2&&SinglePlayerSetup.current.inPlay) accel = !accel; }
     void Boost()
@@ -153,7 +154,7 @@ public class SubmarineControl : MonoBehaviour
     void ToggleBoostEffect()
     {
         if (!boost) { boostEffects.Stop(true, ParticleSystemStopBehavior.StopEmitting); }
-        else { boostEffects.Play(); }
+        else { boostEffects.Play();GameEvents.current.Boost(); }
     }
     void ResetCamera()
     {

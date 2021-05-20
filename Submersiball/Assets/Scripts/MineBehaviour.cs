@@ -24,6 +24,7 @@ public class MineBehaviour : MonoBehaviour
             }
         }
         ExplodeMine();
+        GameEvents.current.MineExplode();
     }
 
     void ExplodeMine()
