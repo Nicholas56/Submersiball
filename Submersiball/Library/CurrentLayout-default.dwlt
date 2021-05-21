@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Game
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 521}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -119,10 +119,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 778, y: 471}
-  m_MaxSize: {x: 16003, y: 14042}
+  m_MinSize: {x: 781, y: 492}
+  m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 72
+  controlID: 143
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,10 +144,10 @@ MonoBehaviour:
     y: 0
     width: 1506
     height: 947
-  m_MinSize: {x: 502, y: 471}
-  m_MaxSize: {x: 12002, y: 14042}
+  m_MinSize: {x: 505, y: 492}
+  m_MaxSize: {x: 12005, y: 14042}
   vertical: 1
-  controlID: 73
+  controlID: 144
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,10 +170,10 @@ MonoBehaviour:
     y: 0
     width: 1506
     height: 676
-  m_MinSize: {x: 502, y: 200}
-  m_MaxSize: {x: 12002, y: 4021}
+  m_MinSize: {x: 505, y: 221}
+  m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 74
+  controlID: 145
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,8 +193,8 @@ MonoBehaviour:
     y: 0
     width: 201
     height: 676
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -248,8 +248,8 @@ MonoBehaviour:
     y: 0
     width: 712
     height: 676
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -428,9 +428,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 00ccffff
-      m_LastClickedID: -13312
-      m_ExpandedIDs: 2efbffff
+      m_SelectedIDs: fcb3ffff
+      m_LastClickedID: -19460
+      m_ExpandedIDs: 2efbffffca3e0000063f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -515,9 +515,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -63.21538, y: 14.035351, z: -66.82165}
+    m_Target: {x: -18.13057, y: -16.69017, z: 121.38043}
     speed: 2
-    m_Value: {x: -63.21538, y: 14.035351, z: -66.82165}
+    m_Value: {x: -18.13057, y: -16.69017, z: 121.38043}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -564,13 +564,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.032307778, y: 0.96057475, z: -0.2460916, w: -0.12575841}
+    m_Target: {x: -0.1058774, y: -0.80607915, z: 0.1520148, w: -0.562239}
     speed: 2
-    m_Value: {x: -0.03193663, y: 0.9607029, z: -0.24612457, w: -0.12430971}
+    m_Value: {x: -0.10586709, y: -0.80600065, z: 0.15200001, w: -0.5621842}
   m_Size:
-    m_Target: 223.82555
+    m_Target: 301.69098
     speed: 2
-    m_Value: 223.47173
+    m_Value: 301.69098
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1094,21 +1094,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Materials
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 62
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Materials
   m_LastFoldersGridSize: 62
   m_LastProjectPath: C:\Users\nicke\Documents\GitHub\Submersiball\Submersiball
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 7.5921774}
-    m_SelectedIDs: 2c520000
-    m_LastClickedID: 21036
-    m_ExpandedIDs: 000000000a520000
+    m_SelectedIDs: 80530000
+    m_LastClickedID: 21376
+    m_ExpandedIDs: 000000006a530000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1136,7 +1136,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000a520000
+    m_ExpandedIDs: 000000006a530000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
