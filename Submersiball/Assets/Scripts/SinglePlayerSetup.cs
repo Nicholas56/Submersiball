@@ -88,8 +88,9 @@ public class SinglePlayerSetup : MonoBehaviour
         currentMap.SetActive(false);
         maps[mapNum].SetActive(true);
         currentMap = maps[mapNum];
+        GameEvents.current.PressButton();
     }
-    public void PlayerNumChoice(int playerNum) { numOfAI = Mathf.Min(playerNum,maxAI); }
+    public void PlayerNumChoice(int playerNum) { numOfAI = Mathf.Min(playerNum,maxAI); GameEvents.current.PressButton();    }
     public void Goalie1Choice(int choice) 
     {
         switch (choice)
@@ -98,6 +99,7 @@ public class SinglePlayerSetup : MonoBehaviour
             case 1: goalie1.SetActive(true); goalie1Aim = false; break;
             case 2: goalie1.SetActive(true); goalie1Aim = true; break;
         }
+        GameEvents.current.PressButton();
     }
     public void Goalie2Choice(int choice) 
     {
@@ -107,6 +109,7 @@ public class SinglePlayerSetup : MonoBehaviour
             case 1: goalie2.SetActive(true); goalie2Aim = false; break;
             case 2: goalie2.SetActive(true); goalie2Aim = true; break;
         }
+        GameEvents.current.PressButton();
     }
     public void DifficultyChoice(int choice)
     {
@@ -116,6 +119,7 @@ public class SinglePlayerSetup : MonoBehaviour
             case 1:AISpeed = midAISpeed; break;
             case 2:AISpeed = hardAISpeed; break;
         }
+        GameEvents.current.PressButton();
     }
     public void ModeChoice(int choice)
     {
@@ -126,6 +130,7 @@ public class SinglePlayerSetup : MonoBehaviour
             case 2:lights.SetActive(false);blackout.SetActive(true); break;
             case 3:mines.SetActive(true);lights.SetActive(false); break;
         }
+        GameEvents.current.PressButton();
     }
     public void TimeChoice(int choice)
     {
@@ -138,6 +143,7 @@ public class SinglePlayerSetup : MonoBehaviour
             case 4: UI_Manager.current.SetTime(240f); break;
             case 5: UI_Manager.current.SetTime(300f); break;
         }
+        GameEvents.current.PressButton();
     }
     public void ChangeTeam1Color(Color color)
     {
@@ -146,6 +152,7 @@ public class SinglePlayerSetup : MonoBehaviour
         team1Material.color = color;
         team1Arena.color = color;
         GameManager.current.team1Color = color;
+        GameEvents.current.PressButton();
     }
     public void ChangeTeam2Color(Color color)
     {
@@ -154,6 +161,7 @@ public class SinglePlayerSetup : MonoBehaviour
         team2Material.color = color;
         team2Arena.color = color;
         GameManager.current.team2Color = color;
+        GameEvents.current.PressButton();
     }
     void UnlockCursor()
     {
@@ -222,6 +230,7 @@ public class SinglePlayerSetup : MonoBehaviour
         HideSubs();
         inPlay = false;
         GameEvents.current.EndMatch();
+        GameEvents.current.PressButton();
     }
     public void Pause()
     {
@@ -229,6 +238,7 @@ public class SinglePlayerSetup : MonoBehaviour
         pausePanel.SetActive(true);
         guiPanel.SetActive(false);
         inPlay = false;
+        GameEvents.current.PressButton();
     }
     public void UnPause()
     {
@@ -236,5 +246,6 @@ public class SinglePlayerSetup : MonoBehaviour
         pausePanel.SetActive(false);
         guiPanel.SetActive(true);
         inPlay = true;
+        GameEvents.current.PressButton();
     }
 }
