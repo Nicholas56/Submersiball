@@ -11427,6 +11427,7 @@ GameObject:
   - component: {fileID: 7674151876343181405}
   - component: {fileID: 8295931111659614554}
   - component: {fileID: 9154200692001666029}
+  - component: {fileID: -6252936952517369139}
   m_Layer: 0
   m_Name: Submarine
   m_TagString: Player
@@ -11538,6 +11539,18 @@ MonoBehaviour:
   currentSpeed: 0
   currentBoost: 0
   accelUI: 0
+--- !u!114 &-6252936952517369139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6365495729727658769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0260db3f484131144a56cd41fb05db6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7385190353425889101
 GameObject:
   m_ObjectHideFlags: 0

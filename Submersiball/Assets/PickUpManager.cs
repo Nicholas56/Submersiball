@@ -69,5 +69,15 @@ public class PickUpManager : MonoBehaviour
 
         freePickupLocations.Add(location);
     }
+
+    public void SetPickupPlayerOne()
+    {
+
+    }
+
+    public void SetPickupPlayerTwo()
+    {
+
+    }
 }
     
