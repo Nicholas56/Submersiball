@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/OnePlayerGame.unity
+- path: Assets/Scenes/TwoPlayerGame.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
