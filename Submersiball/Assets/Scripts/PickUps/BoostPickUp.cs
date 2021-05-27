@@ -21,7 +21,7 @@ public class BoostPickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player1" || other.tag == "Player")
         {
             other.GetComponent<SubmarineControl>().StartBoostRefill();
 

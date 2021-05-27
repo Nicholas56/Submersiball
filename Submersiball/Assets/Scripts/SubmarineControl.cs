@@ -124,11 +124,11 @@ public class SubmarineControl : MonoBehaviour
     }
     void UseItem()
     {
-        //code to use pickups goes here
+        PickUpManager.current.UsePickUpPlayerOne();
     }
     void UseItem2()
     {
-        //and here (player 2)
+        PickUpManager.current.UsePickUpPlayerTwo();
     }
 
     void Accelerate()

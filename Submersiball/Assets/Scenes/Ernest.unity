@@ -3866,7 +3866,7 @@ MonoBehaviour:
   spawnCoolDown: 2
   currentPickupPlayerOne: 0
   currentPickupPlayerTwo: 0
-  minePrefab: {fileID: 3828200621955414003, guid: fa179432064d1484697d5ad7a89e852f, type: 3}
+  minePrefab: {fileID: 3828200621955414003, guid: 3d6e2ae1d2d968547940bc6e2d625dc5, type: 3}
 --- !u!4 &2125721880
 Transform:
   m_ObjectHideFlags: 0

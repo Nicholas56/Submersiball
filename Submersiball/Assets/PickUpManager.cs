@@ -61,7 +61,7 @@ public class PickUpManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("There are no spawn locations available on the list");
+                //Debug.LogError("There are no spawn locations available on the list");
             }
         }
     }
@@ -95,6 +95,8 @@ public class PickUpManager : MonoBehaviour
                 DisableRadar(1);
             }
         }
+
+        currentPickupPlayerOne = AvailablePickups.Empty;
     }
 
     public void UsePickUpPlayerTwo()
@@ -111,6 +113,8 @@ public class PickUpManager : MonoBehaviour
                 DisableRadar(2);
             }
         }
+
+        currentPickupPlayerTwo = AvailablePickups.Empty;
     }
 
     void SpawnMine(int playerNumber)
@@ -119,14 +123,18 @@ public class PickUpManager : MonoBehaviour
         {
             GameObject mine = Instantiate(minePrefab, playerOne.transform);
 
-            mine.tag = "PlayerOne";
+            mine.transform.parent = null;
+
+            mine.tag = "Player1";
         }
 
         if (playerNumber == 2)
         {
             GameObject mine = Instantiate(minePrefab, playerTwo.transform);
 
-            mine.tag = "PlayerTwo";
+            mine.transform.parent = null;
+
+            mine.tag = "Player2";
         }
     }
 

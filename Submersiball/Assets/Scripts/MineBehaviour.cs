@@ -13,6 +13,12 @@ public class MineBehaviour : MonoBehaviour
         ps = GetComponent<ParticleSystem>();
         if (respawnTime > 0 && respawnTime <= 3) { respawnTime = 3.5f; }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRange);
