@@ -8,7 +8,7 @@ public class PlayerMine : MonoBehaviour
     ParticleSystem ps;
     [SerializeField] [Tooltip("If set to zero, mine will not respawn")] float respawnTime = 0;
 
-    int ownerImmunity;
+    int ownerImmunity = 0;
 
     private void Awake()
     {
@@ -18,23 +18,42 @@ public class PlayerMine : MonoBehaviour
 
     private void Start()
     {
-        int ownerImmunity = 0;
+        StartCoroutine("OwnerImmunity");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != transform.tag)
+        if (ownerImmunity == 0)
         {
-            other.GetComponent<Explode>().Explosion();
+            if (other.tag != transform.tag)
+            {
+                other.GetComponent<Explode>().Explosion();
 
-            transform.GetChild(0).gameObject.SetActive(false);
+                transform.GetChild(0).gameObject.SetActive(false);
 
-            StartCoroutine("DestroyGameObject");
+                StartCoroutine("DestroyGameObject");
 
-            ExplodeMine();
+                ExplodeMine();
 
-            GameEvents.current.MineExplode();
+                GameEvents.current.MineExplode();
+            }
         }
+        else
+        {
+            if (other.tag == "Player1" || other.tag == "Player2")
+            {
+
+                    other.GetComponent<Explode>().Explosion();
+
+                    transform.GetChild(0).gameObject.SetActive(false);
+
+                    StartCoroutine("DestroyGameObject");
+
+                    ExplodeMine();
+
+                    GameEvents.current.MineExplode();              
+            }
+        }     
     }
 
     void ExplodeMine()
@@ -46,8 +65,7 @@ public class PlayerMine : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-
-        
+        ownerImmunity += 1;
     }
 
     IEnumerator DestroyGameObject()
