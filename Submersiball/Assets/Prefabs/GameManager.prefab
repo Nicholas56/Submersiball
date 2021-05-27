@@ -68,7 +68,7 @@ MonoBehaviour:
   blackout: {fileID: 0}
   mines: {fileID: 0}
   ball: {fileID: 0}
-  playerSub: {fileID: 6365495729727658769, guid: 41beede19eecd994fa256865d6d5eb3e, type: 3}
+  playerSub: {fileID: 0}
   playerSub2: {fileID: 0}
   goalie1: {fileID: 0}
   goalie2: {fileID: 0}
@@ -277,7 +277,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -459,11 +459,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subEngine: {fileID: 0}
+  subEngineVolume: 1
   subBoost: {fileID: 0}
+  subBoostVolume: 1
   explosion: {fileID: 8300000, guid: 806754719d0775e4f902a8c2433f53b0, type: 3}
+  explosionVolume: 1
   mineExplosion: {fileID: 8300000, guid: f96f9310c2c1cae46a21088d21ad0109, type: 3}
+  mineExplodeVolume: 1
   goalScore: {fileID: 0}
+  scoreGoalVolume: 1
   buttonPress: {fileID: 0}
+  buttonPressVolume: 1
   tracks: []
 --- !u!1001 &2647152102208790236
 PrefabInstance:
@@ -508,6 +514,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3800832361706927000}
+    - target: {fileID: 1154001408184737821, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
+      propertyPath: m_text
+      value: Multiplayer Setup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154001408279568236, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1154001408758036454, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -624,6 +638,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3800832361706927000}
+    - target: {fileID: 1656685698748891244, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656685698748891244, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217178834458284764, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217178834458284764, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3280955494164862623, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -631,6 +661,14 @@ PrefabInstance:
     - target: {fileID: 3280955494164862623, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TimeChoice
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401133662255163447, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401133662255163447, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39c6ddcf19862be4d8c3e4bb220e8867, type: 3}
