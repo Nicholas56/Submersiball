@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+public enum AvailablePickupIcons { decreaseSize, Mine, Radar}
+
 public class UI_Manager : MonoBehaviour
 {
     [SerializeField] float startingTimeValue;
@@ -32,6 +34,17 @@ public class UI_Manager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI teamTwoScoreText;
 
+    [SerializeField] Sprite mineIcon;
+
+    [SerializeField] Sprite decreaseSizeIcon;
+
+    [SerializeField] Sprite radarIcon;
+
+    [SerializeField] GameObject currentPlayerOneIcon;
+
+    [SerializeField] GameObject currentPlayerTwoIcon;
+
+
     int startingScore = 0;
 
     int teamOneScore;
@@ -40,6 +53,10 @@ public class UI_Manager : MonoBehaviour
 
     public static UI_Manager current;
 
+    GameObject playerOnePointer;
+
+    GameObject playerTwoPointer;
+
     void Awake()
     {
         current = this;
@@ -47,6 +64,9 @@ public class UI_Manager : MonoBehaviour
 
     void Start()
     {
+        playerOnePointer = GameObject.FindGameObjectWithTag("Pointer1");
+
+        playerTwoPointer = GameObject.FindGameObjectWithTag("Pointer2");
 
         SetInitialValues();
     }
@@ -140,13 +160,95 @@ public class UI_Manager : MonoBehaviour
         }
     }
 
-    public void SetPickupImagePlayerOne()
+    public void DisableRadarPlayerOne()
     {
+        playerOnePointer.SetActive(false);
 
+        StartCoroutine("PlayerOneRadarCoolDown");
     }
 
-    public void SetPickupImagePlayerTwo()
+    IEnumerator PlayerOneRadarCoolDown()
     {
+        yield return new WaitForSeconds(7);
 
+        playerOnePointer.SetActive(true);
+    }
+
+    public void DisableRadarPlayerTwo()
+    {
+        playerTwoPointer.SetActive(false);
+
+        StartCoroutine("PlayerTwoRadarCoolDown");
+    }
+
+    IEnumerator PlayerTwoRadarCoolDown()
+    {
+        yield return new WaitForSeconds(7);
+
+        playerTwoPointer.SetActive(true);
+    }
+
+    public AvailablePickupIcons SetPlayerPickupIcon(AvailablePickupIcons icon, int playerNumber)
+    {
+        if (playerNumber == 1)
+        {
+            currentPlayerOneIcon.gameObject.SetActive(true);
+
+            if (icon == AvailablePickupIcons.Radar)
+            {
+                currentPlayerOneIcon.GetComponent<Image>().sprite = radarIcon;
+            }
+
+            if (icon == AvailablePickupIcons.decreaseSize)
+            {
+                currentPlayerOneIcon.GetComponent<Image>().sprite = decreaseSizeIcon;
+            }
+
+            if (icon == AvailablePickupIcons.Mine)
+            {
+                currentPlayerOneIcon.GetComponent<Image>().sprite = mineIcon;
+
+                Debug.Log("Elo");
+            }
+        }
+
+        if(playerNumber == 2)
+        {
+            currentPlayerTwoIcon.gameObject.SetActive(true);
+
+            if (icon == AvailablePickupIcons.Radar)
+            {
+                currentPlayerTwoIcon.GetComponent<Image>().sprite = radarIcon;
+            }
+
+            if (icon == AvailablePickupIcons.decreaseSize)
+            {
+                currentPlayerTwoIcon.GetComponent<Image>().sprite = decreaseSizeIcon;
+            }
+
+            if (icon == AvailablePickupIcons.Mine)
+            {
+                currentPlayerTwoIcon.GetComponent<Image>().sprite = mineIcon;
+            }
+        }
+
+        return icon;
+    }
+
+    public void ClearPlayerIcon(int playerNumber)
+    {
+        if (playerNumber == 1)
+        {
+            currentPlayerOneIcon.GetComponent<Image>().sprite = null;
+
+            currentPlayerOneIcon.gameObject.SetActive(false);
+        }
+
+        if (playerNumber == 2)
+        {
+            currentPlayerTwoIcon.GetComponent<Image>().sprite = null;
+
+            currentPlayerTwoIcon.gameObject.SetActive(false);
+        }
     }
 }

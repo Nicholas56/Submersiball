@@ -17,6 +17,8 @@ public class MinePickup : MonoBehaviour
         {
             PickUpManager.current.currentPickupPlayerOne = AvailablePickups.Mine;
 
+            UI_Manager.current.SetPlayerPickupIcon(AvailablePickupIcons.Mine, 1);
+
             FreeLocation();
 
             Destroy(gameObject);
@@ -25,6 +27,8 @@ public class MinePickup : MonoBehaviour
         if(other.tag == "Player2")
         {
             PickUpManager.current.currentPickupPlayerTwo = AvailablePickups.Mine;
+
+            UI_Manager.current.SetPlayerPickupIcon(AvailablePickupIcons.Mine, 2);
 
             FreeLocation();
 

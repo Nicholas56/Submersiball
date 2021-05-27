@@ -88,11 +88,15 @@ public class PickUpManager : MonoBehaviour
             if (currentPickupPlayerOne == AvailablePickups.Mine)
             {
                 SpawnMine(1);
+
+                UI_Manager.current.ClearPlayerIcon(1);
             }
 
             if(currentPickupPlayerOne == AvailablePickups.DisableRadar)
             {
                 DisableRadar(1);
+
+                UI_Manager.current.ClearPlayerIcon(1);
             }
         }
 
@@ -101,16 +105,20 @@ public class PickUpManager : MonoBehaviour
 
     public void UsePickUpPlayerTwo()
     {
-        if (currentPickupPlayerOne != AvailablePickups.Empty)
+        if (currentPickupPlayerTwo != AvailablePickups.Empty)
         {
             if (currentPickupPlayerTwo == AvailablePickups.Mine)
             {
                 SpawnMine(2);
+
+                UI_Manager.current.ClearPlayerIcon(2);
             }
 
             if (currentPickupPlayerTwo == AvailablePickups.DisableRadar)
             {
                 DisableRadar(2);
+
+                UI_Manager.current.ClearPlayerIcon(2);
             }
         }
 
@@ -140,7 +148,15 @@ public class PickUpManager : MonoBehaviour
 
     void DisableRadar(int playerNumber)
     {
+        if (playerNumber == 2)
+        {
+            UI_Manager.current.DisableRadarPlayerOne();
+        }
 
+        if (playerNumber == 1)
+        {
+            UI_Manager.current.DisableRadarPlayerTwo();
+        }
     }
 }
     

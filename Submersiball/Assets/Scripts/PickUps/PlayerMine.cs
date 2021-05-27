@@ -25,7 +25,7 @@ public class PlayerMine : MonoBehaviour
     {
         if (ownerImmunity == 0)
         {
-            if (other.tag != transform.tag)
+            if (other.tag != transform.tag && (other.tag == "Player1" || other.tag == "Player2"))
             {
                 other.GetComponent<Explode>().Explosion();
 
