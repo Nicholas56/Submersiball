@@ -38,7 +38,7 @@ public class UI_Manager : MonoBehaviour
 
     int teamTwoScore;
 
-    public static UI_Manager current;    
+    public static UI_Manager current;
 
     void Awake()
     {
@@ -90,8 +90,8 @@ public class UI_Manager : MonoBehaviour
     public void UpdateSpeedBar()
     {
         speedSliderPlayerOne.value = playerOne.currentSpeed;
-        if(SinglePlayerSetup.current.style==SinglePlayerSetup.playstyle.Multiplayer)
-        speedSliderPlayerTwo.value = playerTwo.currentSpeed;
+        if (SinglePlayerSetup.current.style == SinglePlayerSetup.playstyle.Multiplayer)
+            speedSliderPlayerTwo.value = playerTwo.currentSpeed;
     }
 
     public void UpdateBoostBar()
@@ -138,5 +138,15 @@ public class UI_Manager : MonoBehaviour
                 propellerPlayerTwo.transform.Rotate(new Vector3(0f, 0f, 100f) * playerTwo.currentSpeed / Mathf.Lerp(800, 2000, 3));
             }
         }
+    }
+
+    public void SetPickupImagePlayerOne()
+    {
+
+    }
+
+    public void SetPickupImagePlayerTwo()
+    {
+
     }
 }

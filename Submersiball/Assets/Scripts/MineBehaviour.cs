@@ -18,7 +18,7 @@ public class MineBehaviour : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRange);
         foreach(Collider col in hitColliders)
         {
-            if (col.tag == "Player")
+            if (col.tag != transform.tag)
             {
                 col.GetComponent<Explode>().Explosion();
             }

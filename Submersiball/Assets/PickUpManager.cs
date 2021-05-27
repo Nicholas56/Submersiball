@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AvailablePickups { Empty, Mine, DisableRadar }
+
 public class PickUpManager : MonoBehaviour
 {
     public static PickUpManager current;
 
     [SerializeField] List<GameObject> allPickupLocations;
     List<GameObject> freePickupLocations;
-    List<GameObject> takenPickupLocations;
 
     [SerializeField] List<GameObject> pickups;
 
     [SerializeField] int spawnCoolDown;
+
+    [HideInInspector]
+    public AvailablePickups currentPickupPlayerOne;
+    [HideInInspector]
+    public AvailablePickups currentPickupPlayerTwo;
+
+    public GameObject minePrefab;
+
+    GameObject playerOne;
+
+    GameObject playerTwo;
 
     private void Awake()
     {
@@ -21,6 +33,10 @@ public class PickUpManager : MonoBehaviour
 
     private void Start()
     {
+        playerOne = GameObject.FindGameObjectWithTag("Player1");
+
+        playerTwo = GameObject.FindGameObjectWithTag("Player2");
+
         freePickupLocations = allPickupLocations;
 
         StartCoroutine("SpawnPickupTimer");
@@ -52,30 +68,69 @@ public class PickUpManager : MonoBehaviour
 
     void SpawnPickUp()
     {
-        int randomLocationIndex = Random.Range(1, freePickupLocations.Count);
+        int randomPickup = Random.Range(0, pickups.Count);
+        int randomLocation = Random.Range(0, freePickupLocations.Count);
 
-        int randomPickUpIndex = Random.Range(1, pickups.Count);
+        Instantiate(pickups[randomPickup], freePickupLocations[randomLocation].transform);
 
-        Instantiate(pickups[randomPickUpIndex], freePickupLocations[randomPickUpIndex].transform);
-
-        takenPickupLocations.Add(freePickupLocations[randomLocationIndex]);
-
-        freePickupLocations.Remove(freePickupLocations[randomLocationIndex]);
+        freePickupLocations.Remove(freePickupLocations[randomLocation]);
     }
 
     public void FreeUpSpawnLocation(GameObject location)
     {
-        takenPickupLocations.Remove(location);
-
         freePickupLocations.Add(location);
     }
 
-    public void SetPickupPlayerOne()
+    public void UsePickUpPlayerOne()
     {
+        if (currentPickupPlayerOne != AvailablePickups.Empty)
+        {
+            if (currentPickupPlayerOne == AvailablePickups.Mine)
+            {
+                SpawnMine(1);
+            }
 
+            if(currentPickupPlayerOne == AvailablePickups.DisableRadar)
+            {
+                DisableRadar(1);
+            }
+        }
     }
 
-    public void SetPickupPlayerTwo()
+    public void UsePickUpPlayerTwo()
+    {
+        if (currentPickupPlayerOne != AvailablePickups.Empty)
+        {
+            if (currentPickupPlayerTwo == AvailablePickups.Mine)
+            {
+                SpawnMine(2);
+            }
+
+            if (currentPickupPlayerTwo == AvailablePickups.DisableRadar)
+            {
+                DisableRadar(2);
+            }
+        }
+    }
+
+    void SpawnMine(int playerNumber)
+    {
+        if(playerNumber == 1)
+        {
+            GameObject mine = Instantiate(minePrefab, playerOne.transform);
+
+            mine.tag = "PlayerOne";
+        }
+
+        if (playerNumber == 2)
+        {
+            GameObject mine = Instantiate(minePrefab, playerTwo.transform);
+
+            mine.tag = "PlayerTwo";
+        }
+    }
+
+    void DisableRadar(int playerNumber)
     {
 
     }

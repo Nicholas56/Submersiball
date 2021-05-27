@@ -88,8 +88,6 @@ public class SubmarineControl : MonoBehaviour
                 rb.AddForce(transform.forward * moveSpeed, ForceMode.Force);
             }
 
-            Debug.Log(rb.velocity.magnitude);
-
             accelUI = true;
         }
         else
@@ -199,6 +197,4 @@ public class SubmarineControl : MonoBehaviour
 
         refilled = true;   
     }
-
-
 }

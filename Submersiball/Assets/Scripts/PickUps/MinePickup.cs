@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MinePickup : MonoBehaviour
 {
-    public int ownerPlayerNumber;
-    
+    int pickupID = 1;
+
     void Update()
     {
         transform.Rotate(new Vector3(5f, 5f, 5f) * 0.1f);
@@ -13,20 +13,27 @@ public class MinePickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player1") 
+        if (other.tag == "Player1")
         {
-            if(ownerPlayerNumber != 1)
-            {
+            PickUpManager.current.currentPickupPlayerOne = AvailablePickups.Mine;
 
-            }
+            FreeLocation();
+
+            Destroy(gameObject);
         }
 
         if(other.tag == "Player2")
         {
-            if(ownerPlayerNumber != 2)
-            {
+            PickUpManager.current.currentPickupPlayerTwo = AvailablePickups.Mine;
 
-            }
+            FreeLocation();
+
+            Destroy(gameObject);
         }
+    }
+
+    private void FreeLocation()
+    {
+        PickUpManager.current.FreeUpSpawnLocation(transform.parent.gameObject);
     }
 }
