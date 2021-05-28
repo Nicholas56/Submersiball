@@ -12,6 +12,7 @@ public class SinglePlayerSetup : MonoBehaviour
     [SerializeField] GameObject setupPanel;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject guiPanel;
+    [SerializeField] GameObject endPanel;
 
     [Header("Map Options")]
     [SerializeField] List<GameObject> maps;
@@ -225,6 +226,9 @@ public class SinglePlayerSetup : MonoBehaviour
     {
         PlacePlayers();
         UnlockCursor();
+        UI_Manager.current.ResetUI();
+        endPanel.SetActive(false);
+        guiPanel.SetActive(false);
         setupPanel.SetActive(true);
 
         HideSubs();
@@ -246,6 +250,19 @@ public class SinglePlayerSetup : MonoBehaviour
         pausePanel.SetActive(false);
         guiPanel.SetActive(true);
         inPlay = true;
+        GameEvents.current.PressButton();
+    }
+
+    public void GameOver()
+    {
+        PlacePlayers();
+        UnlockCursor();
+        endPanel.SetActive(true);
+        guiPanel.SetActive(false);
+
+        HideSubs();
+        inPlay = false;
+        GameEvents.current.EndMatch();
         GameEvents.current.PressButton();
     }
 }

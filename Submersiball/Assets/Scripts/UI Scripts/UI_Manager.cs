@@ -44,6 +44,15 @@ public class UI_Manager : MonoBehaviour
 
     [SerializeField] GameObject currentPlayerTwoIcon;
 
+    [SerializeField] TextMeshProUGUI endGameTeamOneScore;
+    [SerializeField] TextMeshProUGUI endGameTeamTwoScore;
+
+    [SerializeField] TextMeshProUGUI endGameTeamOneWin;
+    [SerializeField] TextMeshProUGUI endGameTeamTwoWin;
+
+    [SerializeField] TextMeshProUGUI drawText;
+
+    bool gameOver = false;
 
     int startingScore = 0;
 
@@ -83,6 +92,8 @@ public class UI_Manager : MonoBehaviour
         DisplayTime();
 
         UpdatePropeller();
+
+        GameOver();
     }
 
     private void DisplayTime()
@@ -207,8 +218,6 @@ public class UI_Manager : MonoBehaviour
             if (icon == AvailablePickupIcons.Mine)
             {
                 currentPlayerOneIcon.GetComponent<Image>().sprite = mineIcon;
-
-                Debug.Log("Elo");
             }
         }
 
@@ -249,6 +258,45 @@ public class UI_Manager : MonoBehaviour
             currentPlayerTwoIcon.GetComponent<Image>().sprite = null;
 
             currentPlayerTwoIcon.gameObject.SetActive(false);
+        }
+    }
+
+    public void ResetUI()
+    {
+        gameOver = false;
+        currentTimeValue = 1;
+
+        endGameTeamOneWin.gameObject.SetActive(false);
+        endGameTeamTwoWin.gameObject.SetActive(false);
+        drawText.gameObject.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        if(currentTimeValue <= 0 && gameOver == false)
+        {
+            gameOver = true;
+
+            SinglePlayerSetup.current.GameOver();
+
+
+            endGameTeamOneScore.text = teamOneScore.ToString();
+            endGameTeamTwoScore.text = teamTwoScore.ToString();
+
+            if(teamOneScore > teamTwoScore)
+            {
+                endGameTeamOneWin.gameObject.SetActive(true);
+            }
+            
+            if(teamTwoScore > teamOneScore)
+            {
+                endGameTeamTwoWin.gameObject.SetActive(true);
+            }
+
+            if(teamTwoScore == teamOneScore)
+            {
+                drawText.gameObject.SetActive(true);
+            }
         }
     }
 }

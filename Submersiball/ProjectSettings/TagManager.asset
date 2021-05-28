@@ -30,8 +30,8 @@ TagManager:
   - P1_Cam
   - P2_Cam
   - Ball_Cam
-  - 
-  - 
+  - PlayerOneTag
+  - PlayerTwoTag
   - 
   - 
   - 
