@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AvailablePickups { Empty, Mine, DisableRadar }
+public enum AvailablePickups { Empty, Mine, DisableRadar, DecreaseSize }
 
 public class PickUpManager : MonoBehaviour
 {
@@ -26,6 +26,8 @@ public class PickUpManager : MonoBehaviour
 
     GameObject playerTwo;
 
+    Vector3 normalSubScale;
+
     private void Awake()
     {
         current = this;
@@ -40,6 +42,8 @@ public class PickUpManager : MonoBehaviour
         freePickupLocations = allPickupLocations;
 
         StartCoroutine("SpawnPickupTimer");
+
+        normalSubScale = new Vector3(1f, 1f, 1f);
     }
 
     IEnumerator SpawnPickupTimer()
@@ -56,7 +60,7 @@ public class PickUpManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError("There are no pickups available on the list");
+                    Debug.Log("There are no pickups available on the list");
                 }
             }
             else
@@ -98,6 +102,13 @@ public class PickUpManager : MonoBehaviour
 
                 UI_Manager.current.ClearPlayerIcon(1);
             }
+
+            if(currentPickupPlayerOne == AvailablePickups.DecreaseSize)
+            {
+                DecreasePlayerSize(1);
+
+                UI_Manager.current.ClearPlayerIcon(1);
+            }
         }
 
         currentPickupPlayerOne = AvailablePickups.Empty;
@@ -117,6 +128,13 @@ public class PickUpManager : MonoBehaviour
             if (currentPickupPlayerTwo == AvailablePickups.DisableRadar)
             {
                 DisableRadar(2);
+
+                UI_Manager.current.ClearPlayerIcon(2);
+            }
+
+            if (currentPickupPlayerTwo == AvailablePickups.DecreaseSize)
+            {
+                DecreasePlayerSize(2);
 
                 UI_Manager.current.ClearPlayerIcon(2);
             }
@@ -157,6 +175,37 @@ public class PickUpManager : MonoBehaviour
         {
             UI_Manager.current.DisableRadarPlayerTwo();
         }
+    }
+
+    void DecreasePlayerSize(int playerNumber)
+    {
+        if(playerNumber == 2)
+        {
+            playerOne.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+
+            StartCoroutine("RestorePlayerOneSize");
+        }
+
+        if(playerNumber == 1)
+        {
+            playerTwo.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+
+            StartCoroutine("RestorePlayerTwoSize");
+        }
+    }
+
+    IEnumerator RestorePlayerOneSize()
+    {
+        yield return new WaitForSeconds(7);
+
+        playerOne.transform.localScale = normalSubScale;
+    }
+
+    IEnumerator RestorePlayerTwoSize()
+    {
+        yield return new WaitForSeconds(7);
+
+        playerTwo.transform.localScale = normalSubScale;
     }
 }
     

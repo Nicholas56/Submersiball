@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MinePickup : MonoBehaviour
 {
-    int pickupID = 1;
-
     void Update()
     {
         transform.Rotate(new Vector3(5f, 5f, 5f) * 0.1f);

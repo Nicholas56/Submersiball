@@ -1473,15 +1473,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5695965716559801658, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.012497104
+      value: 0.012497078
       objectReference: {fileID: 0}
     - target: {fileID: 5695965716559801658, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017196669
+      value: -0.000000017247004
       objectReference: {fileID: 0}
     - target: {fileID: 5695965716559801658, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 2.1492533e-10
+      value: 2.1555399e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5695965717331521352, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_Follow
@@ -1493,15 +1493,15 @@ PrefabInstance:
       objectReference: {fileID: 78853092}
     - target: {fileID: 5695965717331521359, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.012497073
+      value: 0.012497104
       objectReference: {fileID: 0}
     - target: {fileID: 5695965717331521359, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001722182
+      value: 0.000000017196665
       objectReference: {fileID: 0}
     - target: {fileID: 5695965717331521359, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.1523916e-10
+      value: -2.1492529e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5695965718098945638, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_Name
@@ -1581,15 +1581,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5695965718160810247, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.012497073
+      value: 0.012497104
       objectReference: {fileID: 0}
     - target: {fileID: 5695965718160810247, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001722182
+      value: 0.000000017196665
       objectReference: {fileID: 0}
     - target: {fileID: 5695965718160810247, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.1523916e-10
+      value: -2.1492529e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5695965718383896488, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1597,15 +1597,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5695965718383896488, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.012497104
+      value: 0.012497078
       objectReference: {fileID: 0}
     - target: {fileID: 5695965718383896488, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017196669
+      value: -0.000000017247004
       objectReference: {fileID: 0}
     - target: {fileID: 5695965718383896488, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 2.1492533e-10
+      value: 2.1555399e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5695965718383896489, guid: d589acb7037803f43b10e308b50be21b, type: 3}
       propertyPath: m_Follow
@@ -1915,6 +1915,14 @@ PrefabInstance:
       propertyPath: spawnCoolDown
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6698829595729032216, guid: 48be26fb2feb25049a76dface734ea99, type: 3}
+      propertyPath: pickups.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698829595729032216, guid: 48be26fb2feb25049a76dface734ea99, type: 3}
+      propertyPath: pickups.Array.data[2]
+      value: 
+      objectReference: {fileID: 2099990659149200951, guid: 67b0949548e8e85469ccd66f1edc250a, type: 3}
     - target: {fileID: 6698829595729032217, guid: 48be26fb2feb25049a76dface734ea99, type: 3}
       propertyPath: m_Name
       value: PickUpManager
