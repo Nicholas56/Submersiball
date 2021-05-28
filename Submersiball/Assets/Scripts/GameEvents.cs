@@ -28,8 +28,8 @@ public class GameEvents
     public void PressButton() { if (onPressButton != null) { onPressButton(); } }
     public event Action<bool> onAccelerate;
     public void Accelerate(bool accel) { if (onAccelerate != null) { onAccelerate(accel); } }
-    public event Action onBoost;
-    public void Boost() { if (onBoost != null) { onBoost(); } }
+    public event Action<bool> onBoost;
+    public void Boost(bool boost) { if (onBoost != null) { onBoost(boost); } }
     public event Action onExplode;
     public void Explode() { if (onExplode != null) { onExplode(); } }
     public event Action onMineExplode;
@@ -40,6 +40,8 @@ public class GameEvents
     public void StartMatch() { if (onStartMatch != null) { onStartMatch(); } }
     public event Action onEndMatch;
     public void EndMatch() { if (onEndMatch != null) { onEndMatch(); } }
+    public event Action onLastTenSeconds;
+    public void LastTenSeconds() { if (onLastTenSeconds != null) { onLastTenSeconds(); } }
     public event Action<Color> onChangeTeam1Color;
     public void ChangeTeam1Color(Color color) { if (onChangeTeam1Color != null) { onChangeTeam1Color(color); } }
     public event Action<Color> onChangeTeam2Color;

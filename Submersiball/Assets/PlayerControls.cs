@@ -20,7 +20,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Accelerate"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""47595802-fea4-4952-bb8e-7c646a3139e4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -376,6 +376,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""13825af1-3cab-424d-8352-0b4739055c75"",
                     ""path"": ""<Keyboard>/leftAlt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Item"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""105d119d-84b9-415e-9351-38c4e163f4d9"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

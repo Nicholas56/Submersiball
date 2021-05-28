@@ -276,6 +276,18 @@ PrefabInstance:
       propertyPath: speedDifForExplosion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9154200692001666029, guid: 41beede19eecd994fa256865d6d5eb3e, type: 3}
+      propertyPath: maxSpeed
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154200692001666029, guid: 41beede19eecd994fa256865d6d5eb3e, type: 3}
+      propertyPath: moveSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154200692001666029, guid: 41beede19eecd994fa256865d6d5eb3e, type: 3}
+      propertyPath: boostSpeed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6252936952517369139, guid: 41beede19eecd994fa256865d6d5eb3e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 41beede19eecd994fa256865d6d5eb3e, type: 3}

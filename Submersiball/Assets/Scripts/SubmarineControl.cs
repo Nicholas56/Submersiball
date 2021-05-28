@@ -152,7 +152,8 @@ public class SubmarineControl : MonoBehaviour
     void ToggleBoostEffect()
     {
         if (!boost) { boostEffects.Stop(true, ParticleSystemStopBehavior.StopEmitting); }
-        else { boostEffects.Play();GameEvents.current.Boost(); }
+        else { boostEffects.Play(); }
+        GameEvents.current.Boost(boost);
     }
     void ResetCamera()
     {

@@ -172,6 +172,7 @@ MonoBehaviour:
   setupPanel: {fileID: 3800832362442299072}
   pausePanel: {fileID: 3800832361720353953}
   guiPanel: {fileID: 3800832362272132763}
+  endPanel: {fileID: 0}
   maps:
   - {fileID: 0}
   - {fileID: 0}
@@ -593,8 +594,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2d82d7ecbb5dd8c428c95beb50b11c89, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
   Loop: 1
@@ -820,8 +821,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ad73a3ef09394499c09707eec74620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subEngine: {fileID: 0}
-  subEngineVolume: 1
+  subEngine: {fileID: 8300000, guid: 2d82d7ecbb5dd8c428c95beb50b11c89, type: 3}
+  subEngineVolume: 0.1
   subBoost: {fileID: 0}
   subBoostVolume: 1
   explosion: {fileID: 8300000, guid: 806754719d0775e4f902a8c2433f53b0, type: 3}
@@ -832,6 +833,8 @@ MonoBehaviour:
   scoreGoalVolume: 1
   buttonPress: {fileID: 0}
   buttonPressVolume: 1
+  lastTen: {fileID: 8300000, guid: e9b4002f88f48524daccea47e013f0b7, type: 3}
+  lastTenVolume: 1
   tracks: []
 --- !u!1001 &2647152102208790236
 PrefabInstance:

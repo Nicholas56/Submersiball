@@ -104,6 +104,8 @@ public class UI_Manager : MonoBehaviour
         float seconds = Mathf.FloorToInt(currentTimeValue % 60);
 
         timeText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+        if (Mathf.Approximately(currentTimeValue, 10)) { GameEvents.current.LastTenSeconds(); }
     }
 
     public void ScoreTeamOne()

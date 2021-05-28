@@ -19,6 +19,7 @@ public class LookAtPlayer : MonoBehaviour
 
     void Update()
     {
+        if(player2)
         LookAt(playerNumber);
     }
 
